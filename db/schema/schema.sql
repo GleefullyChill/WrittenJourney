@@ -39,7 +39,7 @@ CREATE TABLE contributions (
   flag_voted BOOLEAN NOT NULL DEFAULT FALSE);
 
   -- check -- if it is positive it means user vote his own contribution
-  select * from votes v
-  where not EXISTS (select 1 from story_contributions sc
-  where v.contribution_id = sc.contribution_id and v.owner_id=sc.owner_id)
+  -- select * from votes v
+  -- where not EXISTS (select 1 from story_contributions sc
+  -- where v.contribution_id = sc.contribution_id and v.owner_id=sc.owner_id)
 
