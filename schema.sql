@@ -32,6 +32,7 @@ CREATE TABLE contributions (
   content VARCHAR(5000));
 
   CREATE TABLE votes (
+  id SERIAL PRIMARY KEY NOT NULL,
   owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   contribution_id INTEGER REFERENCES contributions(id) ON DELETE CASCADE);
 
