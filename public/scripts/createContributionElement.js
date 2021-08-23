@@ -14,5 +14,6 @@ $(() => {
         ${$date}</div>
       </section>
     `)
+    return $contribution;
   }
 })

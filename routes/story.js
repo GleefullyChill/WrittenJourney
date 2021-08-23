@@ -13,7 +13,7 @@ module.exports = (db) => {
     const story_id = req.params.story_id;
     const withinStoryElement = [];
     return db.query(`
-    SELECT contributions.content AS content, users.name AS username, time_stamp AS date
+    SELECT contributions.content AS content, users.name AS username, time_stamp AS date, story_id AS id
     FROM story_contributions
     JOIN contributions ON contributions.id = contributions_id
     JOIN users ON owner_id = users.id
