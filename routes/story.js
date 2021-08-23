@@ -15,7 +15,7 @@ module.exports = (db) => {
     )
       .then(data => {
         const story = data.rows;
-        res.json({ story });
+        renderStory(story);
       })
       .catch(err => {
         res
