@@ -7,15 +7,37 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
+  //will be called every time a title is clicked to show the full story and contributions
+  //should the story disappear if another title is clicked? should we have it just be hidden and the element can just unhide if clicked again?
   router.get("/", (req, res) => {
     const story_id = req.params.story_id;
-    db.query(`
-    SELECT * FROM stories
-    WHERE id = $1;`, [story_id]
+    const withinStoryElement = [];
+    return db.query(`
+    SELECT content
+    FROM story_contributions
+    JOIN contributions ON contributions.id = contributions_id
+    WHERE story_id = $1
+    AND within_story = true
+    AND active = true;`, [story_id]
     )
       .then(data => {
         const story = data.rows;
-        renderStory(story);
+        withinStoryElement.push(story);
+      return db.query(`
+      SELECT content
+      FROM story_contributions
+      JOIN contributions ON contributions.id = contributions_id
+      WHERE story_id = $1
+      AND within_story = false
+      AND active = true;`, [story_id]
+      )
+      .then(data => {
+        const contributions = data.rows;
+        withinStoryElement.push(contributions);
+        return withinStoryElement;
+      })
+        //renderStory(story)? or return to jQuery
+        //called in jQuery?
       })
       .catch(err => {
         res
