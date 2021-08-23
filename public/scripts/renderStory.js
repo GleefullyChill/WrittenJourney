@@ -9,12 +9,3 @@ $(() => {
     $title.prepend($story)
   }
 })
-
-// const renderTweets = function(tweets) {
-//   const $tweetContainer = $('.tweet-container');
-//   $tweetContainer.empty();
-//   for (const tweet of tweets) {
-//     const $tweet = createTweetElement(tweet);
-//     $tweetContainer.prepend($tweet);
-//   }
-// };

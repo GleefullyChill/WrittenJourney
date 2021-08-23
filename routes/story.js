@@ -13,23 +13,26 @@ module.exports = (db) => {
     const story_id = req.params.story_id;
     const withinStoryElement = [];
     return db.query(`
-    SELECT content
+    SELECT contributions.content AS content, users.name AS username, time_stamp AS date
     FROM story_contributions
     JOIN contributions ON contributions.id = contributions_id
+    JOIN users ON owner_id = users.id
     WHERE story_id = $1
     AND within_story = true
-    AND active = true;`, [story_id]
+    AND active = true
+    ORDER BY time_stamp;`, [story_id]
     )
       .then(data => {
         const story = data.rows;
         withinStoryElement.push(story);
       return db.query(`
-      SELECT content
+      SELECT contributions.content AS content, users.name AS username, time_stamp AS date
       FROM story_contributions
       JOIN contributions ON contributions.id = contributions_id
       WHERE story_id = $1
       AND within_story = false
-      AND active = true;`, [story_id]
+      AND active = true
+      ORDER BY time_stamp;`, [story_id]
       )
       .then(data => {
         const contributions = data.rows;
