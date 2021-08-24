@@ -6,11 +6,8 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (db) => {
-  //will be called every time a title is clicked to show the full story and contributions
-  //should the story disappear if another title is clicked? should we have it just be hidden and the element can just unhide if clicked again?
-  router.get("/", (req, res) => {
-    const story_id = req.params.story_id;
+const getStoryInfo = function(story_id) {
+
     const withinStoryElement = [];
     return db.query(`
     SELECT contributions.content AS content, users.name AS username, time_stamp AS date, story_id AS id
@@ -41,7 +38,15 @@ module.exports = (db) => {
       })
         //renderStory(story)? or return to jQuery
         //called in jQuery?
-      })
+  })
+}
+module.exports = (db) => {
+  getStoryInfo();
+  //will be called every time a title is clicked to show the full story and contributions
+  //should the story disappear if another title is clicked? should we have it just be hidden and the element can just unhide if clicked again?
+  router.get("/", (req, res) => {
+    const story_id = req.params.story_id;
+    getStoryInfo(story_id)
       .catch(err => {
         res
           .status(500)
@@ -75,14 +80,14 @@ module.exports = (db) => {
         VALUES($1, $2, $3)`,
         [story_id, user_id, id])
       })
-      //
-      //Where does this information go
-      //We need to call a jQuery here, or for it to be similar to tweeter, right?
-      //
-      // .then(data => {
-      //   const users = data.rows;
-      //   res.json({ users });
-      // })
+      .then(db.query(`
+        SELECT users.name AS username
+        FROM users
+        where users.id = $1`,
+        [user_id]))
+      .then(username => {
+        newContribution(username, contribution)
+      })
       .catch(err => {
         res
           .status(500)

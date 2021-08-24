@@ -11,17 +11,18 @@ module.exports = (db) => {
     UPDATE story_contributions
     SET within_story = true
     WHERE id = $1;`,
-    [id]);
-    return [story_id, id]
+    [id])
     .then(data => {
       db.query(`
       UPDATE story_contributions
       JOIN contributions ON contributions.id = story_contributions
       SET active = false
       WHERE NOT story_contributions.id = $1
-      AND story.id = $2;`,[data[1], data[0]])
+      AND story.id = $2;`,[id, story_id])
     })
-    .then
+    .then(getStoryInfo(story_id))
+    .then(data =>
+      renderStory(data))
     .catch(err => {
       res
         .status(500)

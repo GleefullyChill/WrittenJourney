@@ -2,11 +2,12 @@ $(() => {
   const renderStory = function(story, contributions) {
     const $activeStory = $(`.active-story`);
     const $story = createStoryElement(story);
+    $activeStory.prepend($story)
     for (const contribute of contributions) {
       const $contribute = createContributionElement(contribute)
       $activeStory.append($contribute);
     }
-    $activeStory.prepend($story)
+    $newContribution = $(`<div="new-contribution-submission">`)
     const $contributionForm = $(`
       <form class="new-contribution" method="POST" action=/${story[0].id}/contribute>
         <textarea id="contribution-text" class>

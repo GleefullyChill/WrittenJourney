@@ -3,10 +3,10 @@
 
 
 $(() => {
-  const createContributionElement = function(contributionsInfo) {
-    const $username = $(`<div>`).text(contributionsInfo.username);
-    const $content = $(`<p>`).text(contributionsInfo.content);
-    const $date = $(`<div>`).text(contributionsInfo.date);
+  const createContributionElement = function(contributionInfo) {
+    const $username = $(`<div>`).text(contributionInfo.username);
+    const $content = $(`<p>`).text(contributionInfo.content);
+    const $date = $(`<div>`).text(contributionInfo.date);
     const $contribution = $(`
       <section class="">
         ${$username}</div>
