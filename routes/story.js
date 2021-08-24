@@ -10,7 +10,11 @@ const router  = express.Router();
 
 const getStoryInfo = function(story_id) {
 
+    //need somewhere to store the data to return
     const withinStoryElement = [];
+
+    //get all the necessary information from the database in two parts
+    //the first query gets all content that will be part of the story
     return db.query(`
     SELECT contributions.content AS content, users.name AS username, time_stamp AS date, story_id AS id
     FROM story_contributions
@@ -24,6 +28,8 @@ const getStoryInfo = function(story_id) {
       .then(data => {
         const story = data.rows;
         withinStoryElement.push(story);
+
+      //the second query gets all the content that will be part of the contributions
       return db.query(`
       SELECT contributions.content AS content, users.name AS username, time_stamp AS date
       FROM story_contributions
@@ -36,24 +42,28 @@ const getStoryInfo = function(story_id) {
       .then(data => {
         const contributions = data.rows;
         withinStoryElement.push(contributions);
+
         return withinStoryElement;
       })
-        //renderStory(story)? or return to jQuery
-        //called in jQuery?
+      //should return the array, withinStoryElement, need more information to test
   })
 
 }
 module.exports = (db) => {
   getStoryInfo();
   //will be called every time a title is clicked to show the full story and contributions
-  //should the story disappear if another title is clicked? should we have it just be hidden and the element can just unhide if clicked again?
   router.get("/", (req, res) => {
+
     const story_id = req.params.story_id;
+
+    //function is above
     getStoryInfo(story_id)
       .then(data => {
+
         const story = data[0];
         const contributions = data[1];
 
+        //function is in scripts/renderStory.js
         renderStory(story, contributions)
       })
       .catch(err => {
@@ -64,6 +74,8 @@ module.exports = (db) => {
   });
   //when a user posts a contribution it must route to here, because it is within that story
   router.post("/contribute", (req, res) => {
+
+    //
     const user_id = req.session.user_id;
     const story_id = req.params.story_id;
     const contribution = req.body.contribution
