@@ -6,6 +6,8 @@
 const express = require('express');
 const router  = express.Router();
 
+//function is called in routes /:story/add_contribution and /:story
+
 const getStoryInfo = function(story_id) {
 
     const withinStoryElement = [];
@@ -39,6 +41,7 @@ const getStoryInfo = function(story_id) {
         //renderStory(story)? or return to jQuery
         //called in jQuery?
   })
+
 }
 module.exports = (db) => {
   getStoryInfo();
@@ -47,6 +50,12 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     const story_id = req.params.story_id;
     getStoryInfo(story_id)
+      .then(data => {
+        const story = data[0];
+        const contributions = data[1];
+
+        renderStory(story, contributions)
+      })
       .catch(err => {
         res
           .status(500)
