@@ -8,7 +8,7 @@ $(() => {
     // when the form is submitted, serialize the input
     const serializedData = $(this).serialize();
     // post the serialized data to the database, then fire the renderTitles func to load all the titles to the page
-    $.post('/tweets', serializedData)
+    $.post('/create', serializedData)
     // after hitting submit button, textarea reset to null
     const $newPostAuthor = $('#author');
     $newPostAuthor.val('')
