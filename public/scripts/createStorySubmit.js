@@ -2,7 +2,7 @@
 
 $(() => {
   const $createStoryform = $("#create-story");
-  $createStoryform.on('submit', function (data) {
+  $createStoryform.on('submit', function (event) {
     // this prevents html to defaultly post to another page
     event.preventDefault();
     // when the form is submitted, serialize the input
