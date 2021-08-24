@@ -18,6 +18,8 @@ $(() => {
         ${$date}</div>
       </section>
     `)
+    //NEEDS AN UPVOTE button
+
     //send the HTML back
     return $contribution;
   }
