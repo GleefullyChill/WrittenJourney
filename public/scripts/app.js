@@ -15,27 +15,27 @@ $(() => {
     });
   };
   loadTitles()
-  $.get(/*route here*/)
-    .then((/*what the route returns*/) => {})
+  // $.get(/*route here*/)
+  //   .then((/*what the route returns*/) => {})
 
-  $.post(/*route here*/)
-    .then((/*what the route returns*/) => {})
+  // $.post(/*route here*/)
+  //   .then((/*what the route returns*/) => {})
 
-  $.post(/*route here*/)
-    .then((/*what the route returns*/) => {})
+  // $.post(/*route here*/)
+  //   .then((/*what the route returns*/) => {})
 
-  $.post(/*route here*/)
-    .then((/*what the route returns*/) => {})
+  // $.post(/*route here*/)
+  //   .then((/*what the route returns*/) => {})
 
-  $.ajax({
-    method: "PATCH",
-    url: "/api/users"
+  // $.ajax({
+  //   method: "PATCH",
+  //   url: "/api/users"
 
-  $.ajax({
-    method: "PATCH",
-    url: "/api/users"
+  // $.ajax({
+  //   method: "PATCH",
+  //   url: "/api/users"
 
-  $.ajax({
-    method: "PATCH",
-    url: "/api/users"
+  // $.ajax({
+  //   method: "PATCH",
+  //   url: "/api/users"
 });
