@@ -16,7 +16,7 @@ CREATE TABLE users (
   owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   title VARCHAR(255) NOT NULL,
   abstract VARCHAR(255) NOT NULL,
-  complited BOOLEAN NOT NULL DEFAULT FALSE
+  completed BOOLEAN NOT NULL DEFAULT FALSE
   );
 
 CREATE TABLE story_contributions (
@@ -30,6 +30,7 @@ CREATE TABLE story_contributions (
 CREATE TABLE contributions (
   id SERIAL PRIMARY KEY NOT NULL,
   content VARCHAR(5000),
+  date INTEGER,
   active BOOLEAN NOT NULL DEFAULT TRUE);
 
   CREATE TABLE votes (
