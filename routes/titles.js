@@ -9,6 +9,7 @@ module.exports = (db) => {
     SELECT users.name AS username, stories.title AS title, stories.abstract AS abstract, stories.completed AS completed
     FROM stories
     JOIN users ON users.id = owner_id
+    ORDER BY story_id
     `)
 
     .then(data => res.json(data))

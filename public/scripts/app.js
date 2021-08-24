@@ -9,6 +9,12 @@ $(() => {
   });;
 
   //this will make it client side SPA behaviour
+  const loadTitles = function() {
+    $.get("/titles", (response) => {
+      renderTitles(response);
+    });
+  };
+  loadTitles()
   $.get(/*route here*/)
     .then((/*what the route returns*/) => {})
 
