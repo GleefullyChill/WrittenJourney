@@ -9,27 +9,33 @@ $(() => {
   });;
 
   //this will make it client side SPA behaviour
-  $.get(/*route here*/)
-    .then((/*what the route returns*/) => {})
+  const loadTitles = function() {
+    $.get("/titles", (response) => {
+      renderTitles(response);
+    });
+  };
+  loadTitles()
+  // $.get(/*route here*/)
+  //   .then((/*what the route returns*/) => {})
 
-  $.post(/*route here*/)
-    .then((/*what the route returns*/) => {})
+  // $.post(/*route here*/)
+  //   .then((/*what the route returns*/) => {})
 
-  $.post(/*route here*/)
-    .then((/*what the route returns*/) => {})
+  // $.post(/*route here*/)
+  //   .then((/*what the route returns*/) => {})
 
-  $.post(/*route here*/)
-    .then((/*what the route returns*/) => {})
+  // $.post(/*route here*/)
+  //   .then((/*what the route returns*/) => {})
 
-  $.ajax({
-    method: "PATCH",
-    url: "/api/users"
+  // $.ajax({
+  //   method: "PATCH",
+  //   url: "/api/users"
 
-  $.ajax({
-    method: "PATCH",
-    url: "/api/users"
+  // $.ajax({
+  //   method: "PATCH",
+  //   url: "/api/users"
 
-  $.ajax({
-    method: "PATCH",
-    url: "/api/users"
+  // $.ajax({
+  //   method: "PATCH",
+  //   url: "/api/users"
 });
