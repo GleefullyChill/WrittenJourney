@@ -41,22 +41,4 @@ $(() => {
     return $story;
   }
 })
-createStoryElement(
-  [
-    {
-      username: 'Sandy',
-      content: "This is the Way.",
-      date: 1628986411384
-    },
-    {
-      username: 'James',
-      content: "The World Ends.",
-      date: 1628986411384
-    },
-    {
-      username: 'Descartes',
-      content: "I think therefore, we die.",
-      date: 1628986411384
-    }
-  ]
-)
+

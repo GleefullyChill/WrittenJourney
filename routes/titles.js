@@ -9,10 +9,13 @@ module.exports = (db) => {
     SELECT users.name AS username, stories.title AS title, stories.abstract AS abstract, stories.completed AS completed
     FROM stories
     JOIN users ON users.id = owner_id
-    ORDER BY story_id
+    ORDER BY stories.id
     `)
 
-    .then(data => res.json(data))
+    .then(data => {
+      const titles = data.rows
+      res.json(titles)
+    })
 
     .catch(err => {
       res
