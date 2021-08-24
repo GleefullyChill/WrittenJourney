@@ -15,13 +15,10 @@ module.exports = (db) => {
     const abstract = req.body.abstract;
     return db
       .query(`INSERT INTO stories (owner_id, title,abstract) VALUES ($1,$2,$3)) RETURNING *;`[owner_id, title, abstract])
-      .then((story) => {
-        return story.rows
-      })
-      .then((render) => {
-        // for now:
-        res.json({ render })
-      })
+      // after inputing the data into table story, render all the titles to the page.
+      .then(renderTitles())
+
+
       .catch(err => {
         res
           .status(500)
