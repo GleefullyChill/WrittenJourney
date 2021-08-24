@@ -3,7 +3,7 @@
 //also called when a new story is submitted?
 
 
-//$(() => {
+$(() => {
   const createStoryElement = function(storyInfo) {
 
     //keeping the owner out of the for loop will allow for more modularity in the future
@@ -40,7 +40,7 @@
 
     return $story;
   }
-//})
+})
 createStoryElement(
   [
     {
