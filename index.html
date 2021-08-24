@@ -33,7 +33,7 @@
    <nav>
     <span class="logo">Written Journey</span>
     <span class="write">
-      <span><span class="bold">Create </span>a new story</span>
+      <span class="toggle-switch"><span class="bold">Create </span>a new story</span>
       <i class="fas fa-angle-double-down"></i>
     </span>
     <span class="button">Login</span>
@@ -43,11 +43,32 @@
  <!-- Page-specific (main) content here -->
  <main class="container">
 
+
+
   <!-- show a list of titles section -->
   <section class="render-titles"></section>
 
    <!-- creat a new story section -->
-   <section class="create-story"></section>
+   <!-- use css to display none -->
+   <section class="create-story">
+    <form id=create-story>
+      <label>author name:</label>
+      <input name="authorName"/>
+      <br/>
+
+      <label>title:</label>
+      <textarea placeholder="What would you like to name your story?" name="title" id="title"></textarea>
+      <br/>
+
+      <label>abstract:</label>
+      <textarea name="abstract" id="abstract" placeholder="tell us what this story is about!"
+      ></textarea>
+      <br/>
+      <button type="submit">Submit!</button>
+
+    </form>
+
+   </section>
 
    <!-- render story section -->
    <section class="render-story"></section>
