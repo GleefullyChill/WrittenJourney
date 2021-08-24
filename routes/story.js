@@ -67,11 +67,12 @@ module.exports = (db) => {
     const user_id = req.session.user_id;
     const story_id = req.params.story_id;
     const contribution = req.body.contribution
+    const date = Date.now();
     db.query(`
-    INSERT INTO contributions (content)
-    VALUES ($1)
+    INSERT INTO contributions (content, date)
+    VALUES ($1, $2)
     RETURNING id;`,
-    [contribution])
+    [contribution, date])
     //this should return the contributions.id for the following .then
       .then(id => {
         const contribution_id = id.rows;

@@ -2,9 +2,9 @@
 const express = require('express');
 const router  = express.Router();
 
-
+//
 module.exports = (db) => {
-  router.post("/", (req, res) => {
+  router.patch("/", (req, res) => {
     const id = req.params.story_contributions_id;
     const story_id = req.params.story_id;
     db.query(`
