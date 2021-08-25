@@ -2,10 +2,10 @@
 
 $(() => {
 //  after document is ready, the create-story form is hided
-  $('#create-story').hide();
+  $('.create-story').hide();
 
   $('.toggle-switch').on('click', ()=>{
-  $("#create-story").slideToggle()
+  $(".create-story").slideToggle()
   })
   // const $createStoryform = $("#create-story");
   // $createStoryform.on('submit', function (event) {
@@ -17,4 +17,5 @@ $(() => {
 
 
 
-})
+
+

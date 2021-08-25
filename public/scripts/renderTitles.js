@@ -15,7 +15,7 @@ const renderTitles = function(titles) {
 
     for (const title of titles) {
       const $title = createTitleElement(title)
-      $renderTitles.append($title);
+      $renderTitles.prepend($title);
     }
 
     const $renderStoryButton = $('.render-story-button')
@@ -24,9 +24,11 @@ const renderTitles = function(titles) {
     $renderStoryButton.on('click', function() {
 
       $(this).unbind('click');
+
       //reset other titles classes to avoid entire story from being a button
       const $currentActiveTitle = $('.active-story')
       $currentActiveTitle.removeClass('active-story');
+
 
       $(this).addClass('active-story')
 
@@ -35,11 +37,7 @@ const renderTitles = function(titles) {
 
       $.get('/api/:story', serializedData)
 
-        .then(() => {
-          $.get(`/api/story?${serializedData}`, (response) => {
-           renderStory(response);
-          })
-        })
+        .then(loadTitles(serializedData))
 
         .catch(err => {
           res

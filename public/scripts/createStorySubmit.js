@@ -9,8 +9,8 @@ $(() => {
     const serializedData = $(this).serialize();
     // post the serialized data to the database, then fire the renderTitles func to load all the titles to the page
     $.post('/create', serializedData)
-    .then( data =>{
-      createTitileElement(data)
+    .then( (data) =>{
+      loadTitles()
       // res.redirect ('/')
       console.log(data)
       // renderTitles(data)
