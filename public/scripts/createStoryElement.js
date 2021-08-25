@@ -2,11 +2,12 @@
 //called by renderStory to create an element made from the information passed to it
 //also called when a new story is submitted?
 
-
-$(() => {
-  const createStoryElement = function(storyInfo) {
+const createStoryElement = function(storyInfo) {
 
     //keeping the owner out of the for loop will allow for more modularity in the future
+    if (!storyInfo) {
+      return;
+    }
     const owner = storyInfo[0].username;
     let story = `${storyInfo[0].content}\n`;
     const storyDate = timeago.format(storyInfo[0].date);
@@ -39,6 +40,4 @@ $(() => {
     `);
 
     return $story;
-  }
-})
-
+};

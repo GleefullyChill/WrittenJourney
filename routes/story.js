@@ -8,14 +8,16 @@ const router  = express.Router();
 
 //function is called in routes /:story/add_contribution and /:story
 
-const getStoryInfo = function(story_id, db) {
+module.exports = (db) => {
+
+  const getStoryInfo = function(story_id, db) {
 
     //need somewhere to store the data to return
     const withinStoryElement = [];
 
     //get all the necessary information from the database in two parts
     //the first query gets all content that will be part of the story
-    return db.query(`
+    db.query(`
     SELECT contributions.content AS content, users.name AS username, time_stamp AS date, story_id AS id
     FROM story_contributions
     JOIN contributions ON contributions.id = contributions_id
@@ -30,7 +32,7 @@ const getStoryInfo = function(story_id, db) {
         withinStoryElement.push(story);
 
       //the second query gets all the content that will be part of the contributions
-      return db.query(`
+      db.query(`
       SELECT contributions.content AS content, users.name AS username, time_stamp AS date
       FROM story_contributions
       JOIN contributions ON contributions.id = contributions_id
@@ -46,10 +48,10 @@ const getStoryInfo = function(story_id, db) {
         return withinStoryElement;
       })
       //should return the array, withinStoryElement, need more information to test
-  })
+    })
 
-}
-module.exports = (db) => {
+  }
+
 
   //will be called every time a title is clicked to show the full story and contributions
   router.get("/", (req, res) => {
@@ -71,5 +73,5 @@ module.exports = (db) => {
           .status(500)
           .json({ error: err.message });
       });
-  });
+  })
 };
