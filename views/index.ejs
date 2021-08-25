@@ -1,17 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Written Journey</title>
+  <!-- jQuery -->
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<!-- timeago -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- External CSS -->
+<!-- the normalize sheet to cancel all the browser set css styles -->
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      type="text/css"
+    />
+<!-- Google Fonts -->
+<!-- After we choose our fonts, add it here -->
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<!-- App CSS -->
+    <!-- css sheets will be applied accordingly, the last being processed will win the form! -->
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+ <!-- External JS -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+   <!-- Top nav bar -->
+   <nav>
+    <span class="logo">Written Journey</span>
+    <span class="write">
+      <span class="toggle-switch"><span class="bold">Create </span>a new story</span>
+      <i class="fas fa-angle-double-down"></i>
+    </span>
+    <span class="button">Login</span>
+    <span class="button">Register</span>
+  </nav>
 
-  <body>
-    <h1>Hello World!</h1>
-  </body>
+ <!-- Page-specific (main) content here -->
+ <main class="container">
+
+
+   <!-- creat a new story section -->
+   <!-- use css to display none -->
+   <section class="create-story-container">
+    <form class='create-story'>
+      <label>author name:</label>
+      <input name="authorName"/>
+      <br/>
+
+      <label>title:</label>
+      <textarea placeholder="What would you like to name your story?" name="title" id="title"></textarea>
+      <br/>
+
+      <label>abstract:</label>
+      <textarea name="abstract" id="abstract" placeholder="tell us what this story is about!"
+      ></textarea>
+      <br/>
+      <button type="submit">Submit!</button>
+
+    </form>
+
+   </section>
+
+   <!-- show a list of titles section -->
+  <section class="render-titles"></section>
+
+   <!-- render story section -->
+   <section class="render-story"></section>
+
+   <!-- render contribution section when the creater has not chosen the favourite one, the vote button should go in here as well-->
+   <section class="create-story"></section>
+
+   <!-- creat a new contribution section -->
+   <section class="create-contribution">
+    <form id=create-contribution>
+      <label>user name:</label>
+      <input id="userName"/>
+     <br/>
+
+     <label>content:</label>
+     <textarea placeholder="What would you like to contribute to the story?" name="content" id="content"></textarea>
+    <br/>
+    <button type="submit">Submit!</button>
+
+
+
+</body>
+<!-- App JS all the func.js files should go here, and use doc.ready at the top of pages.-->
+<script src="/scripts/renderStory.js"></script>
+<script src="/scripts/renderTitles.js"></script>
+<script src="/scripts/newContribution.js"></script>
+<script src="/scripts/createStoryElement.js"></script>
+<script src="/scripts/createContributionElement.js"></script>
+<script src="/scripts/error.js"></script>
+<script src="/scripts/createTitleElement.js"></script>
+<script src="/scripts/createStorySubmit.js"></script>
+<script src="/scripts/createStoryButton.js"></script>
+<script src="/scripts/contributionSubmit.js"></script>
+<script src="/scripts/app.js"></script>
+
 </html>
