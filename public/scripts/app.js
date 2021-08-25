@@ -15,6 +15,11 @@ $(() => {
     });
   };
   loadTitles()
+  // const loadStory = function(storyQuery) {
+  //   $.get(`/api/story?${storyQuery}`, (response) => {
+  //     renderStory(response);
+  //   });
+  // };
 
 
   // $.post(/*route here*/)

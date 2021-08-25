@@ -27,11 +27,21 @@ const renderTitles = function(titles) {
       $(this).addClass('active-story')
 
       const storyId = $(this).parent().find(".story-id").val()
-      console.log(storyId)
       const serializedData = `story_id=${storyId}`;
-      console.log(serializedData)
-      $.get('/:story', serializedData)//.then(data => renderStory(data))
-      // renderStory('crystal','Luke');
+
+      $.get('/api/:story', serializedData)
+
+        .then(() => {
+          $.get(`/api/story?${serializedData}`, (response) => {
+           renderStory(response);
+          })
+        })
+
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
     });
   })
 }
