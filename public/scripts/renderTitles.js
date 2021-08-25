@@ -15,7 +15,7 @@ const renderTitles = function(titles) {
 
     for (const title of titles) {
       const $title = createTitleElement(title)
-      $renderTitles.append($title);
+      $renderTitles.prepend($title);
     }
 
     const $renderStoryButton = $('.render-story-button')
@@ -35,11 +35,7 @@ const renderTitles = function(titles) {
 
       $.get('/api/:story', serializedData)
 
-        .then(() => {
-          $.get(`/api/story?${serializedData}`, (response) => {
-           renderStory(response);
-          })
-        })
+        .then(loadTitles(serializedData))
 
         .catch(err => {
           res

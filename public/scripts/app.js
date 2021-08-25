@@ -1,3 +1,14 @@
+
+const loadTitles = function() {
+  $.get("/api/titles", (response) => {
+    renderTitles(response);
+  });
+};
+ const loadStory = function(storyQuery) {
+    $.get(`/api/story?${storyQuery}`, (response) => {
+      renderStory(response);
+    });
+  };
 $(() => {
   // $.ajax({
   //   method: "GET",
@@ -9,17 +20,9 @@ $(() => {
   // });;
 
   //this will make it client side SPA behaviour
-  const loadTitles = function() {
-    $.get("/api/titles", (response) => {
-      renderTitles(response);
-    });
-  };
+
   loadTitles()
-  // const loadStory = function(storyQuery) {
-  //   $.get(`/api/story?${storyQuery}`, (response) => {
-  //     renderStory(response);
-  //   });
-  // };
+
 
 
   // $.post(/*route here*/)
