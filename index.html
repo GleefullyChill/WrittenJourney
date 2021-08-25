@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Written Journey</title>
+  <!-- jQuery -->
+  <script
+  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+  integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+<!-- External CSS -->
+<!-- the normalize sheet to cancel all the browser set css styles -->
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      type="text/css"
+    />
+  <link rel="stylesheet" href="/public/styles/layout.css" type="text/css" />
+
+<!-- Google Fonts -->
+<!-- After we choose our fonts, add it here -->
+
+<!-- App CSS -->
+    <!-- css sheets will be applied accordingly, the last being processed will win the form! -->
+
+ <!-- External JS -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+   <!-- Top nav bar -->
+   <nav>
+    <span class="logo">Written Journey</span>
+    <span class="write">
+      <span class="toggle-switch"><span class="bold">Create </span>a new story</span>
+      <i class="fas fa-angle-double-down"></i>
+    </span>
+    <span class="button">Login</span>
+    <span class="button">Register</span>
+  </nav>
+
+ <!-- Page-specific (main) content here -->
+ <main class="container">
+
+
+
+  <!-- show a list of titles section -->
+  <section class="render-titles"></section>
+
+   <!-- creat a new story section -->
+   <!-- use css to display none -->
+   <section class="create-story">
+    <form id=create-story>
+      <label>author name:</label>
+      <input name="authorName"/>
+      <br/>
+
+      <label>title:</label>
+      <textarea placeholder="What would you like to name your story?" name="title" id="title"></textarea>
+      <br/>
+
+      <label>abstract:</label>
+      <textarea name="abstract" id="abstract" placeholder="tell us what this story is about!"
+      ></textarea>
+      <br/>
+      <button type="submit">Submit!</button>
+
+    </form>
+
+   </section>
+
+   <!-- render story section -->
+   <section class="render-story"></section>
+
+   <!-- creat a new contribution section -->
+   <section class="new-contribution"></section>
+
+   <!-- render contribution section when the creater has not chosen the favourite one, the vote button should go in here as well-->
+   <section class="create-story"></section>
+
+
+
+</body>
+<!-- App JS all the func.js files should go here, and use doc.ready at the top of pages.-->
+<script src="/renderStory.js"></script>
+<script src="/renderTitles.js"></script>
+<script src="/newContribution.js"></script>
+<script src="/createStoryElement.js"></script>
+<script src="/createContributionElement.js"></script>
+
+</html>
