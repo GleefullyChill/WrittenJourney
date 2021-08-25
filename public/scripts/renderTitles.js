@@ -23,9 +23,10 @@ const renderTitles = function(titles) {
       $('.active-story').removeClass("active-story");
 
       $(this).addClass('active-story')
-      const storyId = $(this).find('.story-id').html();
-      console.log(storyId);
-      renderStory('crytal','Luke');
+
+      const storyId = $('.active-story').closest('output')
+      console.log($(storyId));
+      renderStory('crystal','Luke');
     });
   })
 }

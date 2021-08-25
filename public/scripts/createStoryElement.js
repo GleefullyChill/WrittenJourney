@@ -31,13 +31,12 @@ const createStoryElement = function(storyInfo) {
     $date = $(`<div>`).text(storyDate);
 
     //this format will allow us to easier change the end look by adding more html elements
-    $story = $(`
-      <section class="visible rendered story">
-        ${$date}</div>
-        ${$content}</p>
-        ${$contributors}</div>
-      </section>
-    `);
+    $story = $(`<section class="visible rendered story">`).append(
+        $date,
+        $content,
+        $contributors
+
+    );
 
     return $story;
 };
