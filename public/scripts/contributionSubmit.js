@@ -2,7 +2,7 @@
 
 $(() => {
   const $createContributionform = $("#create-contribution");
-  $createContributionform.on('submit', function (data) {
+  $createContributionform.on('submit', function (event) {
     // this prevents html to defaultly post to another page
     event.preventDefault();
     // when the form is submitted, serialize the input
