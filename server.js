@@ -55,7 +55,7 @@ app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/titles", titlesRoutes(db));
 //app.use("/story", storyRoutes(db));
 app.use("/create", createStoryRoute(db));
-app.use("/login/:user_id", loginRoutes(db));
+app.use("/login", loginRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
