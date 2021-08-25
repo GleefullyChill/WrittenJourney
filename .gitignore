@@ -3,8 +3,5 @@ public/styles
 .env
 *.log
 *.sqlite3
-<<<<<<< HEAD
 *package-lock.json
-=======
 
->>>>>>> Masha
