@@ -1,7 +1,7 @@
 // when submit button is hit, send the data to the database contribution story, empty the form and render the story
 
 $(() => {
-  const $createContributionform = $("#create-contribution");
+  const $createContributionform = $(".create-contribution");
   $createContributionform.on('submit', function (event) {
     // this prevents html to defaultly post to another page
     event.preventDefault();

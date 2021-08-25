@@ -9,6 +9,13 @@ $(() => {
     const serializedData = $(this).serialize();
     // post the serialized data to the database, then fire the renderTitles func to load all the titles to the page
     $.post('/create', serializedData)
+    .then((data)=>{
+      createTitileElement(data)
+      // res.redirect ('/')
+      console.log(data)
+      // renderTitles(data)
+      // should be add title
+    })
     // after hitting submit button, textarea reset to null
     const $newPostAuthor = $('#author');
     $newPostAuthor.val('')
