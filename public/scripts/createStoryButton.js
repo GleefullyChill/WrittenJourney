@@ -12,7 +12,7 @@ $(() => {
   //   // this prevents html to defaultly post to another page
   //   event.preventDefault();
 
-  })
+
 
 
 

@@ -13,7 +13,7 @@ module.exports = (db) => {
   //will be called every time a title is clicked to show the full story and contributions
   router.get("/", (req, res) => {
 
-    const story_id = req.query.story_id;
+    const storyId = req.query.story_id;
 
       //need somewhere to store the data to return
     const withinStoryElement = [];
@@ -28,7 +28,7 @@ module.exports = (db) => {
     WHERE story_id = $1
     AND within_story = true
     AND active = true
-    ORDER BY date;`, [story_id]
+    ORDER BY date;`, [storyId]
     )
       .then(data => {
         const story = data.rows;
@@ -43,12 +43,12 @@ module.exports = (db) => {
       WHERE story_id = $1
       AND within_story = false
       AND active = true
-      ORDER BY date;`, [story_id]
+      ORDER BY date;`, [storyId]
       )
       .then(data => {
         const contributions = data.rows;
         withinStoryElement.push(contributions);
-
+        withinStoryElement.push(storyId)
         return withinStoryElement;
       })
       .then(data => {
