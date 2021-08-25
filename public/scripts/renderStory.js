@@ -17,6 +17,7 @@ const renderStory = function(storyInformation) {
 
     //find the place where the story has been activated
     const $activeStory = $(`.active-story`);
+    $activeStory.empty();
     //create a story element from all the contributions currently active within the story and put it at the top of the container
     const $story = createStoryElement(story);
     $activeStory.append($story)

@@ -25,8 +25,8 @@ const renderTitles = function(titles) {
 
       //reset other titles classes to avoid entire story from being a button
       const $currentActiveTitle = $('.active-story')
-      $currentActiveTitle.addClass('.render-story-button')
-      $(this).removeClass('.render-story-button')
+      $currentActiveTitle.addClass('render-story-button')
+      $(this).removeClass('render-story-button')
       $currentActiveTitle.removeClass('active-story');
 
       $(this).addClass('active-story')
