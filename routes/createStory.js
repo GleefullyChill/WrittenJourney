@@ -4,7 +4,8 @@ const router = express.Router();
 
 module.exports = (db) => {
   //create a story
-  router.post("/create", function (req, res) {
+  router.post("/", function (req, res) {
+
     if (!req.body.title || !req.body.abstract) {
       res.status(400).json({ error: 'invalid request: no data in POST body' });
       return;
@@ -13,10 +14,12 @@ module.exports = (db) => {
     const owner_id = req.session.user_id;
     const title = req.body.title;
     const abstract = req.body.abstract;
-    return db
-      .query(`INSERT INTO stories (owner_id, title,abstract) VALUES ($1,$2,$3)) RETURNING *;`[owner_id, title, abstract])
+    return db.query(`INSERT INTO stories (owner_id, title,abstract) VALUES ($1,$2,$3)) RETURNING *;`, [owner_id, title, abstract])
       // after inputing the data into table story, render all the titles to the page.
-      .then(renderTitles())
+      .then((data) => {
+        const titleInfo = data.rows;
+
+        renderTitles(titleInfo)})
 
 
       .catch(err => {

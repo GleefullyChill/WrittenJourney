@@ -19,6 +19,12 @@ CREATE TABLE users (
   completed BOOLEAN NOT NULL DEFAULT FALSE
   );
 
+CREATE TABLE contributions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  content VARCHAR(5000),
+  date BIGINT,
+  active BOOLEAN NOT NULL DEFAULT TRUE);
+
 CREATE TABLE story_contributions (
   id SERIAL PRIMARY KEY NOT NULL,
   story_id INTEGER REFERENCES stories(id) ON DELETE CASCADE,
@@ -27,16 +33,10 @@ CREATE TABLE story_contributions (
   within_story BOOLEAN NOT NULL DEFAULT FALSE);
 
 
-CREATE TABLE contributions (
-  id SERIAL PRIMARY KEY NOT NULL,
-  content VARCHAR(5000),
-  date INTEGER,
-  active BOOLEAN NOT NULL DEFAULT TRUE);
-
-  CREATE TABLE votes (
+CREATE TABLE votes (
   id SERIAL PRIMARY KEY NOT NULL,
   owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  contribution_id INTEGER REFERENCES contributions(id) ON DELETE CASCADE
+  contribution_id INTEGER REFERENCES contributions(id) ON DELETE CASCADE,
   flag_voted BOOLEAN NOT NULL DEFAULT FALSE);
 
   -- check -- if it is positive it means user vote his own contribution

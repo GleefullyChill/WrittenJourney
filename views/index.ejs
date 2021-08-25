@@ -12,6 +12,8 @@
   crossorigin="anonymous"
   referrerpolicy="no-referrer"
 ></script>
+<!-- timeago -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <!-- External CSS -->
 <!-- the normalize sheet to cancel all the browser set css styles -->
 <link
@@ -46,8 +48,8 @@
 
    <!-- creat a new story section -->
    <!-- use css to display none -->
-   <section class="create-story">
-    <form id=create-story>
+   <section class="create-story-container">
+    <form class='create-story'>
       <label>author name:</label>
       <input name="authorName"/>
       <br/>
@@ -96,5 +98,11 @@
 <script src="/scripts/newContribution.js"></script>
 <script src="/scripts/createStoryElement.js"></script>
 <script src="/scripts/createContributionElement.js"></script>
+<script src="/scripts/error.js"></script>
+<script src="/scripts/createTitleElement.js"></script>
+<script src="/scripts/createStorySubmit.js"></script>
+<script src="/scripts/createStoryButton.js"></script>
+<script src="/scripts/contributionSubmit.js"></script>
+<script src="/scripts/app.js"></script>
 
 </html>

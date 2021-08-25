@@ -2,8 +2,7 @@
 //called by renderStory and by newContribution scripts, builds an html element with jQuery to follow the story element in chronological order
 
 
-$(() => {
-  const createContributionElement = function(contributionInfo) {
+const createContributionElement = function(contributionInfo) {
 
     //get all the info safely into html code
     const $username = $(`<div>`).text(contributionInfo.username);
@@ -22,5 +21,4 @@ $(() => {
 
     //send the HTML back
     return $contribution;
-  }
-})
+}

@@ -1,16 +1,17 @@
 
 //is called in route functions of story.js and add_contribution.js
 
+const renderStory = function(story, contributions) {
+  $(() => {
+    if (!story || !contributions) {
+      return;
+    }
 
-$(() => {
-  const renderStory = function(story, contributions) {
     //find the place where the story has been activated
     const $activeStory = $(`.active-story`);
-
     //create a story element from all the contributions currently active within the story and put it at the top of the container
     const $story = createStoryElement(story);
     $activeStory.prepend($story)
-
     //contributions is an array of objects to be turned into contribution elements
     for (const contribute of contributions) {
       const $contribute = createContributionElement(contribute)
@@ -32,5 +33,6 @@ $(() => {
       </form>
     `)
     $activeStory.append($contributionForm);
-  }
-})
+
+  })
+}
