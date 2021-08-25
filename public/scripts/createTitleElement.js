@@ -6,7 +6,9 @@ const createTitleElement = function(title) {
   const storyId = title.story_id;
   const $username = $(`<div>`).text(title.username);
   const $titleText = $(`<h3>`).text(title.title);
-  const $abstract = $(`<p>`).text(title.abstract).addClass("render-story-button");
+  const $storyButton = $(`<p>`).text('Expand!').addClass("render-story-button");
+  const $abstract = $(`<p>`).text(title.abstract).append($storyButton)
+
   const $storyId = $(`<output class="story-id" value="${storyId}">`).val(storyId)
 
   let $complete;
