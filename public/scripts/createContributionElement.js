@@ -10,13 +10,11 @@ const createContributionElement = function(contributionInfo) {
     const $date = $(`<div>`).text(contributionInfo.date);
 
     //put it into this block of HTML
-    const $contribution = $(`
-      <section class="">
-        ${$username}</div>
-        ${$content}</p>
-        ${$date}</div>
-      </section>
-    `)
+    const $contribution = $(`<section class="contribution">`).append(
+        $username,
+        $content,
+        $date
+    )
     //NEEDS AN UPVOTE button
 
     //send the HTML back

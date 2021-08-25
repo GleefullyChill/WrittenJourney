@@ -1,9 +1,16 @@
 
 //is called in route functions of story.js and add_contribution.js
 
-const renderStory = function(story, contributions) {
+const renderStory = function(storyInformation) {
   $(() => {
-    if (!story || !contributions) {
+
+    //comes in with an arrary of 2 arrays
+    const story = storyInformation[0];
+    const contributions = storyInformation[1];
+
+    if (!story[0]) {
+
+      //turn into an error, story is gone
       return;
     }
 
@@ -23,9 +30,9 @@ const renderStory = function(story, contributions) {
     $newContribution = $(`<div="new-contribution-submission"></div>`)
     //create a form underneath all of the contributions, action takes the story_id which is the passed here from the first story object
     const $contributionForm = $(`
-      <form class="new-contribution" method="POST" action=/${story[0].id}/contribute>
+    <form class="new-contribution">
         <textarea id="contribution-text" class>
-        <label for="contribution-text">You can contribute too!
+        <label name="" for="contribution-text">You can contribute too!
         <div>
           <button type="submit" class="form-button">
         </div>

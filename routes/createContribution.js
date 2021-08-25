@@ -8,7 +8,7 @@ const router  = express.Router();
 module.exports = (db) => {
 
 
-  router.post("/contribute", (req, res) => {
+  router.post("/", (req, res) => {
 
     //
     const user_id = req.session.user_id;
