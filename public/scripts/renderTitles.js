@@ -24,11 +24,15 @@ const renderTitles = function(titles) {
     $renderStoryButton.on('click', function() {
 
       $(this).unbind('click');
-      $('.active-story').removeClass("active-story");
+
+      //reset other titles classes to avoid entire story from being a button
+      const $currentActiveTitle = $('.active-story')
+      $currentActiveTitle.removeClass('active-story');
+
 
       $(this).addClass('active-story')
 
-      const storyId = $(this).parent().find(".story-id").val()
+      const storyId = $(this).parent().parent().find(".story-id").val()
       const serializedData = `story_id=${storyId}`;
 
       $.get('/api/:story', serializedData)

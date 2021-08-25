@@ -42,7 +42,8 @@ module.exports = (db) => {
         FROM users
         where users.id = $1`,
         [user_id]))
-      .then(username => {
+      .then(data => {
+        const username = data.rows
         newContribution(username, contribution)
       })
       .catch(err => {

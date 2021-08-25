@@ -26,8 +26,4 @@ $(() => {
     // after submission, hide the creation form
     $createStoryform.hide()
   })
-
-
-
-
 })

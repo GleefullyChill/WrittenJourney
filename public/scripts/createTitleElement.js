@@ -3,23 +3,27 @@
 
 const createTitleElement = function(title) {
 
+  const storyId = title.story_id;
   const $username = $(`<div>`).text(title.username);
   const $titleText = $(`<h3>`).text(title.title);
-  const $abstract = $(`<p>`).text(title.abstract);
-  const $storyId = $(`<output class="story-id">`).val(title.story_id)
+  const $storyButton = $(`<p>`).text('Expand!').addClass("render-story-button");
+  const $abstract = $(`<p>`).text(title.abstract).append($storyButton)
+
+  const $storyId = $(`<output class="story-id" value="${storyId}">`).val(storyId)
+
   let $complete;
   if (title.complete === true) {
     $complete = $(`<div>${'Complete!'}</div>`);
   } else {
     $complete = $(`<div>${'In Progress'}</div>`);
   }
-  $titleText.addClass("render-story-button")
 
-  const $title = $(`<section class="title">`).append($storyId).append(
+
+  const $title = $(`<section class="title">`).append($storyId).prepend(
     $titleText,
-    $abstract,
     $username,
-    $complete
+    $complete,
+    $abstract
   )
   return $title
 };
