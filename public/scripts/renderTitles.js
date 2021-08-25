@@ -1,6 +1,8 @@
 
 //called in loadTitles (app.js)
 
+//const story = require("../../routes/story");
+
 
 
 const renderTitles = function(titles) {
@@ -19,13 +21,27 @@ const renderTitles = function(titles) {
     const $renderStoryButton = $('.render-story-button')
 
 
-    $renderStoryButton.on('click', () => {
+    $renderStoryButton.on('click', function() {
       $('.active-story').removeClass("active-story");
 
       $(this).addClass('active-story')
-      const storyId = $(this).find('.story-id').html();
-      console.log(storyId);
-      renderStory('crytal','Luke');
+
+      const storyId = $(this).parent().find(".story-id").val()
+      const serializedData = `story_id=${storyId}`;
+
+      $.get('/api/:story', serializedData)
+
+        .then(() => {
+          $.get(`/api/story?${serializedData}`, (response) => {
+           renderStory(response);
+          })
+        })
+
+        .catch(err => {
+          res
+            .status(500)
+            .json({ error: err.message });
+        });
     });
   })
 }
