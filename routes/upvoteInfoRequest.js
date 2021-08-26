@@ -10,8 +10,9 @@ module.exports = (db) => {
 
   // const numVotes = 0; this needs to be added
   router.get("/", function (req, res) {
+
     const owner_id = req.session.user_id;
-    const contribution_id = req.body.contribution_id;
+    const contribution_id = req.query.contribution_id;
     const voteArray = [];
     // Firstly, check if the user has already voted. If flag_voted is true, update to make it false and return the votes number to update.
     db.query(`

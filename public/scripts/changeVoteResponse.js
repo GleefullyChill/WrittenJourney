@@ -11,7 +11,8 @@ const changeUpvoteResponse = function(status) {
       $.post("/upvote", serializedData)
       $upvote.addClass('red');
       count ++;
-      $upvoteNum.val(count);
+      $upvoteNum.empty();
+      $upvoteNum.html(count);
       return;
     }
     if (bool === true) {
@@ -23,7 +24,8 @@ const changeUpvoteResponse = function(status) {
       });
         $upvote.addClass('red')
         count++;
-        $upvoteNum.val(count);
+        $upvoteNum.empty();
+        $upvoteNum.html(count);
         return;
       }
       if (bool === false) {
@@ -35,7 +37,8 @@ const changeUpvoteResponse = function(status) {
         });
           $upvote.removeClass('red')
           count--;
-          $upvoteNum.val(count);
+          $upvoteNum.empty();
+          $upvoteNum.html(count);
           return;
         }
 })
