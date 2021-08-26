@@ -19,7 +19,12 @@ const getTitleInfo = function() {
     return response;
   });
 };
-
+const addContributionToStory = function( ) {
+  $.ajax({
+    method: "PATCH",
+    url: "/:story/:contribution"
+  })
+}
 
 $(() => {
   // $.ajax({

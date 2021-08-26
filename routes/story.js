@@ -35,7 +35,6 @@ module.exports = (db) => {
         const story = data.rows;
         withinStoryElement.push(story);
         let userCheck = false;
-        console.log(username)
         if (story[0].username === username.name) {
           userCheck = true;
         }

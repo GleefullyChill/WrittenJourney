@@ -34,17 +34,14 @@ module.exports = (db) => {
         //IS this return needed, or could it just be sent back by the db
       })
       .then(id => {
-        return db.query(`
+        db.query(`
         INSERT INTO story_contributions (story_id, owner_id, contribution_id)
         VALUES($1, $2, $3)
         RETURNING *;`,
         [story_id, user_id, id])
         .then(() => {
-          res.status(201);
+          res.status(201).send();
         })
-      })
-      .then(() => {
-        res.status(201);
       })
       .catch(err => {
         res
