@@ -8,31 +8,35 @@ const renderStory = function(storyInformation) {
     const story = storyInformation[0];
     const contributions = storyInformation[1];
     const storyId = storyInformation[2];
-
-    if (!story[0]) {
-
-      //turn into an error, story is gone
-      return;
-    }
-
-    //find the place where the story has been activated
     const $activeStory = $(`.active-story`);
     $activeStory.empty();
-    //create a story element from all the contributions currently active within the story and put it at the top of the container
-    const $story = createStoryElement(story);
-    $activeStory.append($story)
-    //contributions is an array of objects to be turned into contribution elements
-    for (const contribute of contributions) {
-      const $contribute = createContributionElement(contribute, storyId)
 
-      //then add them to the active container from the bottom, first contribution first
-      $activeStory.append($contribute);
-    }
+      //turn into an error, story is gone
+
+
+    //find the place where the story has been activated
+    if (story) {
+      // if ($activeStory.hasClass("empty-story")) {
+      //   $activeStory.removeClass("empty-story");
+      // }
+      //create a story element from all the contributions currently active within the story and put it at the top of the container
+      const $story = createStoryElement(story);
+      console.log("story: ", $story)
+      $activeStory.append($story)
+      //contributions is an array of objects to be turned into contribution elements
+      for (const contribute of contributions) {
+        const $contribute = createContributionElement(contribute, storyId)
+        //then add them to the active container from the bottom, first contribution first
+        $activeStory.append($contribute);
+      }
+    }// else {
+    //   $activeStory.addClass("empty-story");
+    // }
     //add a tag for us to stick any new contributions
     $newContribution = $(`<div="new-contribution-submission"></div>`)
     //create a form underneath all of the contributions, action takes the story_id which is the passed here from the first story object
     const $contributionForm = $(`
-    <form class="new-contribution" value="story_id=${storyId}">
+    <form class="create-contribution" value="story_id=${storyId}">
         <textarea id="contribution-text" class></textarea>
         <label for="contribution-text"> You can contribute too!
         <div>
@@ -42,6 +46,6 @@ const renderStory = function(storyInformation) {
       </form>
     `)
     $activeStory.append($contributionForm);
-
+    submitContributionListener();
   })
 }

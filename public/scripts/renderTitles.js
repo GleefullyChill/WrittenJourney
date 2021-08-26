@@ -18,33 +18,9 @@ const renderTitles = function(titles) {
       $renderTitles.prepend($title);
     }
 
-    const $renderStoryButton = $('.render-story-button')
+    renderStoryButton()
 
 
-    $renderStoryButton.on('click', function() {
-
-      $(this).unbind('click');
-
-      //reset other titles classes to avoid entire story from being a button
-      const $currentActiveTitle = $('.active-story')
-      $currentActiveTitle.removeClass('active-story');
-
-
-      $(this).addClass('active-story')
-
-      const storyId = $(this).parent().parent().find(".story-id").val()
-      const serializedData = `story_id=${storyId}`;
-
-      $.get('/api/:story', serializedData)
-
-        .then(loadTitles(serializedData))
-
-        .catch(err => {
-          res
-            .status(500)
-            .json({ error: err.message });
-        });
-    });
   })
 }
 // module.exports = ( { renderTitles })

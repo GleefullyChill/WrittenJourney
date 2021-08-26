@@ -35,8 +35,8 @@ module.exports = (db) => {
         withinStoryElement.push(story);
 
       //the second query gets all the content that will be part of the contributions
-      db.query(`
-      SELECT contributions.content AS content, users.name AS username, date AS date
+      return db.query(`
+      SELECT contributions.content AS content, users.name AS username, date AS date, contribution_id AS id
       FROM story_contributions
       JOIN contributions ON contributions.id = contribution_id
       JOIN users ON story_contributions.owner_id = users.id
@@ -54,14 +54,15 @@ module.exports = (db) => {
       .then(data => {
         res.json(data)
       })
+
       //should return the array, withinStoryElement, need more information to test
     })
 
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+     .catch(err => {
+       res
+         .status(500)
+         .json({ error: err.message });
+     });
   })
   return router;
 };
