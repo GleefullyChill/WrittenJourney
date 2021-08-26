@@ -49,7 +49,7 @@ const createStoryRoute = require('./routes/createStory');
 const createContribution = require('./routes/createContribution');
 const loginRoutes = require('./routes/login');
 const upvoteInfoRoutes = require('./routes/upvoteInfoRequest');
-const upvoteRoutes = require('./routes/upvote');
+//const upvoteRoutes = require('./routes/upvote');
 
 
 // Mount all resource routes
@@ -62,8 +62,8 @@ app.use("/api/upvote", upvoteInfoRoutes(db));
 app.use("/create", createStoryRoute(db));
 app.use("/:story/contribute", createContribution(db))
 app.use("/login", loginRoutes(db));
-app.use("/upvote", upvoteRoutes(db));
-app.use("/upvote/edit", upvoteRoutes(db));
+//app.use("/upvote", upvoteRoutes(db));
+//app.use("/upvote/edit", upvoteRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
 

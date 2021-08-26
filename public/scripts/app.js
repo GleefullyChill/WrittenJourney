@@ -16,6 +16,7 @@ const getUpvoteInfo = function() {
 }
 
 
+
 $(() => {
   // $.ajax({
   //   method: "GET",

@@ -7,17 +7,19 @@ const submitContributionListener = function(){
       event.preventDefault();
       // when the form is submitted, serialize the input
       const serializedData = $(this).serialize();
-      // post the serialized data to the database, then fire the renderTitles func to load all the titles to the page
-      $.post('/:story/contribute', serializedData)
-      // after hitting submit button, textarea reset to null
-      // Do we need  to const again or just use it?
+      console.log(serializedData)
       const $content = $("#content");
       $content.empty()
+      // post the serialized data to the database, then fire the renderTitles func to load all the titles to the page
+      $.post('/:story/contribute', serializedData).then(loadStory(serializedData))
+      // after hitting submit button, textarea reset to null
+      // Do we need  to const again or just use it?
+
 
       // after submission, hide the creation form
-      $createContributionform.hide()
+      $(this).hide()
       console.log(serializedData)
-      loadStory()
+      loadStory(serializedData)
     })
   })
 };

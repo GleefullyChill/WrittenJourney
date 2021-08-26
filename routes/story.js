@@ -36,7 +36,7 @@ module.exports = (db) => {
 
       //the second query gets all the content that will be part of the contributions
       db.query(`
-      SELECT contributions.content AS content, users.name AS username, date AS date
+      SELECT contributions.content AS content, users.name AS username, date AS date, contribution_id AS id
       FROM story_contributions
       JOIN contributions ON contributions.id = contribution_id
       JOIN users ON story_contributions.owner_id = users.id

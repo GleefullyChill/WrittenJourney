@@ -12,7 +12,7 @@ $(() => {
     .then( (data) =>{
       loadTitles()
       // res.redirect ('/')
-      console.log(data)
+
       // renderTitles(data)
       // should be add title
     })

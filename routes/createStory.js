@@ -6,43 +6,34 @@ const renderTitles = require('../public/scripts/renderTitles')
 module.exports = (db) => {
   //create a story
   router.post("/", function (req, res) {
-    console.log(req.body)
-    console.log(req.session.user_id)
-    // if (!req.body.title || !req.body.abstract) {
-    //   res.status(400).json({ error: 'invalid request: no data in POST body' });
-    //   return;
-    // }
+    console.log(req.body);
+    console.log(req.session.user_id);
 
-    const owner_id = req.session.user_id;
+
+    const ownerId = req.session.user_id;
     const title = req.body.title;
     const abstract = req.body.abstract;
-    return db.query(`INSERT INTO stories (owner_id, title,abstract) VALUES ($1,$2,$3) RETURNING *`, [owner_id, title, abstract])
+    const date = Date.now();
+    return db.query(`INSERT INTO stories (owner_id, title,abstract) VALUES ($1,$2,$3) RETURNING *;`, [ownerId, title, abstract])
       // after inputing the data into table story, render all the titles to the page.
       .then((data) => {
-        const titleInfo = data.rows;
-
-        res.json(titleInfo[0]);
-        // console.log(data.rows)
-
-        // renderTitles(titleInfo)
+        const storyId = data.rows[0].id;
+        db.query(`INSERT INTO contributions (date)
+        VALUES ($1)
+        RETURNING *;`, [date])
+        .then(data => {
+          const contributionId = data.rows[0].id;
+          db.query(`INSERT INTO story_contributions (story_id, owner_id, contribution_id, within_story)
+          VALUES ($1, $2, $3, TRUE);`, [storyId, ownerId, contributionId]);
+          res.json(data.rows[0]);
+        })
       })
-      // .then(router.post("/", function (req, res) {res.redirect('/')})
-
 
       .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
           console.log(err)
-        // req.body.key defined in the ajax jquery?
-        // const story = {
-        //   owner_id: req.session.user_id,
-        //   title : req.body.title;
-        //   abstract:req.body.abstract,
-        //   created_at: Date.now()
-        // };
-
-
 
       });
 

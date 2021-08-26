@@ -38,16 +38,6 @@ module.exports = (db) => {
         VALUES($1, $2, $3)`,
         [story_id, user_id, id])
       })
-      .then(db.query(`
-        SELECT users.name AS username
-        FROM users
-        where users.id = $1`,
-        [user_id]))
-      .then(data => {
-        const username = data.rows
-        res.json(username,)
-        newContribution(username, contribution)
-      })
       .catch(err => {
         res
           .status(500)
