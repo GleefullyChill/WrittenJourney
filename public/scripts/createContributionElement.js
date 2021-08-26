@@ -9,7 +9,7 @@ const createContributionElement = function(contributionInfo, storyId, userCheck)
   const date = timeago.format(contributionInfo.date)
 
   if(content) {
-    console.log("here?")
+
     const $username = $(`<div>`).text(contributionInfo.username);
     const $content = $(`<p class="contribution-content" value=${contributionId}>`).text(content);
     const $date = $(`<div>`).val(date);

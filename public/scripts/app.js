@@ -19,10 +19,15 @@ const getTitleInfo = function() {
     return response;
   });
 };
-const addContributionToStory = function( ) {
+const addContributionToStory = function(storyId, contributionId) {
+  const serializedData = `story_id=${storyId}&contribution_id=${contributionId}`
   $.ajax({
     method: "PATCH",
-    url: "/:story/:contribution"
+    url: `/add/${storyId}/${contributionId}`,
+    data: serializedData
+  })
+  .then(() => {
+    loadStory(`story_id=${storyId}`);
   })
 }
 
