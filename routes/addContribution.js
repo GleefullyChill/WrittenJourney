@@ -5,10 +5,6 @@ const router  = express.Router();
 //NOTE: this is a PATCH route, because it only updates, no creation of data
 module.exports = (db) => {
   router.patch("/", (req, res) => {
-    // console.log(
-    //   "req.params: ", req.params,
-    //   "req.body: ", req.body,
-    //   "req.data: ", req.header)
 
     const contributionId = req.body.contribution_id;
     const storyId = req.body.story_id;
