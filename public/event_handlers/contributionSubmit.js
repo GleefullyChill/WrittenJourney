@@ -1,5 +1,8 @@
+
+
+
 // when submit button is hit, send the data to the database contribution story, empty the form and render the story
-const submitContributionListener = function(){
+const submitContributionListener = function() {
   $(() => {
     const $createContributionform = $(".create-contribution");
     $createContributionform.on('submit', function (event) {
@@ -7,7 +10,7 @@ const submitContributionListener = function(){
       event.preventDefault();
       // when the form is submitted, serialize the input
       const serializedData = $(this).serialize();
-      console.log(serializedData)
+      console.log("data: ", serializedData)
       const $content = $("#content");
       $content.empty()
       // post the serialized data to the database, then fire the renderTitles func to load all the titles to the page
