@@ -14,7 +14,11 @@ const getUpvoteInfo = function() {
     changeUpvote(response);
   })
 }
-
+const getTitleInfo = function() {
+  return $.get("/api/titles", (response) => {
+    return response;
+  });
+};
 
 
 $(() => {

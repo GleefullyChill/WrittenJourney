@@ -11,18 +11,18 @@ const createTitleElement = function(title) {
 
   const $storyId = $(`<output class="story-id" value="${storyId}">`).val(storyId)
 
-  let $complete;
-  if (title.complete === true) {
-    $complete = $(`<div>${'Complete!'}</div>`);
+  let $status;
+  if (title.completed === true) {
+    $status = $(`<div>${'Complete!'}</div>`);
   } else {
-    $complete = $(`<div>${'In Progress'}</div>`);
+    $status = $(`<div>${'In Progress'}</div>`);
   }
 
 
   const $title = $(`<section class="title">`).append($storyId).prepend(
     $titleText,
     $username,
-    $complete,
+    $status,
     $abstract
   )
   return $title
