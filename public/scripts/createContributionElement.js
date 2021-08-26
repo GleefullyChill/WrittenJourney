@@ -13,7 +13,7 @@ const createContributionElement = function(contributionInfo, storyId) {
     const $username = $(`<div>`).text(contributionInfo.username);
     const $content = $(`<p class="contribution-content" value=${contributionId}>`).text(content);
     const $date = $(`<div>`).val(date);
-    const $upvote = $(`<p>`).text('&hearts');
+    const $upvote = $(`<p>`).text('&hearts 111');
     // for now
     const $upvoteNum = $(`<p>`).text ('0')
 
@@ -21,7 +21,8 @@ const createContributionElement = function(contributionInfo, storyId) {
     const $contribution = $(`<section class="contribution" value="${storyId}">`).append(
         $username,
         $content,
-        $date
+        $date,
+        $upvote
     )
     //NEEDS AN UPVOTE button
 
