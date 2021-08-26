@@ -1,3 +1,7 @@
+
+
+
+
 const express = require('express');
 const router = express.Router();
 
@@ -5,9 +9,10 @@ module.exports = (db) => {
   //add an upvote to the contribution
 
   // const numVotes = 0; this needs to be added
-  router.post("/", function (req, res) {
+  router.get("/", function (req, res) {
+
     const owner_id = req.session.user_id;
-    const contribution_id = req.prams.contribution_id;
+    const contribution_id = req.query.contribution_id;
     const voteArray = [];
     // Firstly, check if the user has already voted. If flag_voted is true, update to make it false and return the votes number to update.
     db.query(`
@@ -29,6 +34,7 @@ module.exports = (db) => {
           .then(data => {
             const votes = data.rows[0].count;
             voteArray.push(votes);
+            voteArray.push(contribution_id)
             return voteArray;
           })
           .then(data => {

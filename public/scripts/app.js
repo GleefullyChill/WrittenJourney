@@ -12,9 +12,9 @@ const loadTitles = function() {
     renderStory(response);
   });
 };
-const getUpvoteInfo = function() {
-  $.get("/api/upvote", (response) => {
-    changeUpvote(response);
+const getUpvoteInfo = function(serializedData) {
+  $.get("/api/upvote", serializedData, (response) => {
+    changeUpvoteResponse(response);
   })
 }
 const getTitleInfo = function() {
