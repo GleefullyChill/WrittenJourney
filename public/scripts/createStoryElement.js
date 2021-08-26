@@ -4,9 +4,8 @@
 
 const createStoryElement = function(storyInfo) {
 
-  let story = `${storyInfo[0].content}\n`;
+  let story;
   const storyDate = timeago.format(storyInfo[0].date);
-  $content = $(`<p>`).text(story);
   $date = $(`<div>`).text(storyDate);
 
   if (storyInfo[0].content) {
@@ -14,7 +13,7 @@ const createStoryElement = function(storyInfo) {
     for (const contribution of storyInfo) {
       story += `${contribution.content}\n`;
     }
-
+    $content = $(`<p>`).text(story);
     //this format will allow us to easier change the end look by adding more html elements
     $story = $(`<section class="visible rendered story">`).append(
         $date,

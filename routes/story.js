@@ -14,6 +14,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
 
     const storyId = req.query.story_id;
+    const username = req.session.username;
 
       //need somewhere to store the data to return
     const withinStoryElement = [];
@@ -33,6 +34,11 @@ module.exports = (db) => {
       .then(data => {
         const story = data.rows;
         withinStoryElement.push(story);
+        let userCheck = false;
+        if (story[0].username === username.name) {
+          userCheck = true;
+        }
+        withinStoryElement[0].push(userCheck);
 
       //the second query gets all the content that will be part of the contributions
       return db.query(`

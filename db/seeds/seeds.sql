@@ -12,16 +12,16 @@ VALUES (2, 'Into the forest', 'A pair of friends get into trouble going to throu
 
 INSERT INTO contributions (content, date, active)
 VALUES ('Gathering their courage, they ran into the woods.', 1628986411384, TRUE),
-('Jogging',1628986411384, TRUE),
-('Castle', 1628986411384, TRUE),
-('Jogging', 1628986411384, FALSE),
-('Jogging', 1628986411384, TRUE),
-('Castle', 1628986411384, TRUE),
-('Jogging', 1628986411384, TRUE),
-('Jogging', 1628986411384, TRUE),
-('Friendship', 1628986411384, TRUE),
-('Friendship', 1628986411384, TRUE),
-('Friendship', 1628986411384, TRUE);
+('Jogging1',1628986411384, TRUE),
+('Castle1', 1628986411384, TRUE),
+('Jogging2', 1628986411384, FALSE),
+('Jogging3', 1628986411384, TRUE),
+('Castle2', 1628986411384, TRUE),
+('Jogging4', 1628986411384, TRUE),
+('Jogging5', 1628986411384, TRUE),
+('Friendship1', 1628986411384, TRUE),
+('Friendship2', 1628986411384, TRUE),
+('Friendship3', 1628986411384, TRUE);
 
 INSERT INTO story_contributions (story_id, owner_id, contribution_id, within_story)
 VALUES (1, 2, 1, TRUE),

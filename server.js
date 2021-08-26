@@ -46,9 +46,10 @@ const widgetsRoutes = require("./routes/widgets");
 const titlesRoutes = require('./routes/titles');
 const storyRoutes = require('./routes/story');
 const createStoryRoute = require('./routes/createStory');
-const createContribution = require('./routes/createContribution');
+const createContributionRoutes = require('./routes/createContribution');
 const loginRoutes = require('./routes/login');
 const upvoteInfoRoutes = require('./routes/upvoteInfoRequest');
+const addContributionRoutes = require('./routes/addContribution')
 //const upvoteRoutes = require('./routes/upvote');
 
 
@@ -60,10 +61,11 @@ app.use("/api/titles", titlesRoutes(db));
 app.use("/api/:story", storyRoutes(db));
 app.use("/api/upvote", upvoteInfoRoutes(db));
 app.use("/create", createStoryRoute(db));
-app.use("/:story/contribute", createContribution(db))
+app.use("/:story/contribute", createContributionRoutes(db));
 app.use("/login", loginRoutes(db));
 //app.use("/upvote", upvoteRoutes(db));
-//app.use("/upvote/edit", upvoteRoutes(db));
+//app.use("/:upvote/edit", upvoteRoutes(db));
+app.use("/add/:story/:contribute", addContributionRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
 

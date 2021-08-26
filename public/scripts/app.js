@@ -14,8 +14,22 @@ const getUpvoteInfo = function() {
     changeUpvote(response);
   })
 }
-
-
+const getTitleInfo = function() {
+  return $.get("/api/titles", (response) => {
+    return response;
+  });
+};
+const addContributionToStory = function(storyId, contributionId) {
+  const serializedData = `story_id=${storyId}&contribution_id=${contributionId}`
+  $.ajax({
+    method: "PATCH",
+    url: `/add/${storyId}/${contributionId}`,
+    data: serializedData
+  })
+  .then(() => {
+    loadStory(`story_id=${storyId}`);
+  })
+}
 
 $(() => {
   // $.ajax({

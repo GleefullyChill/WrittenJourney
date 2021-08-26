@@ -6,9 +6,6 @@ const renderTitles = require('../public/scripts/renderTitles')
 module.exports = (db) => {
   //create a story
   router.post("/", function (req, res) {
-    console.log(req.body);
-    console.log(req.session.user_id);
-
 
     const ownerId = req.session.user_id;
     const title = req.body.title;
@@ -33,7 +30,6 @@ module.exports = (db) => {
         res
           .status(500)
           .json({ error: err.message });
-          console.log(err)
 
       });
 
