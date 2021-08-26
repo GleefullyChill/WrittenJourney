@@ -3,7 +3,7 @@
 
 const renderStory = function(storyInformation) {
   $(() => {
-
+    const userCheck = storyInformation[0].splice(-1);
     //comes in with an arrary of 2 arrays
     const story = storyInformation[0];
     const contributions = storyInformation[1];
@@ -23,7 +23,7 @@ const renderStory = function(storyInformation) {
       $activeStory.append($story)
       //contributions is an array of objects to be turned into contribution elements
       for (const contribute of contributions) {
-        const $contribute = createContributionElement(contribute, storyId)
+        const $contribute = createContributionElement(contribute, storyId, userCheck)
         //then add them to the active container from the bottom, first contribution first
         $activeStory.append($contribute);
       }
