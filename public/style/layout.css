@@ -1,34 +1,21 @@
-// See: https://sass-lang.com/
-
 body {
-  background-color: rgb(238, 236, 141);
+  background-color: #eeec8d;
   font-size: large;
-  color:
-  h1 {
-    color: #244751;
-  }
+  color: h1;
+  color-color: #244751;
 }
 
 nav {
-  height : 100px;
+  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   font-size: xx-large;
   margin: 3 em;
   background-color: gold;
-
-
-  .logo {
-    // padding: 3em
-
-
-  }
 }
-
-.contribution{
+.contribution {
   display: flex;
   flex-direction: row;
-  align-content:center
-
+  align-content: center;
 }
