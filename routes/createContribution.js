@@ -9,11 +9,12 @@ module.exports = (db) => {
 
 
   router.post("/", (req, res) => {
-
+    console.log("body: ",req.body)
+    console.log("params: ",req.params)
     //
     const user_id = req.session.user_id;
     const story_id = req.params.story_id;
-    const contribution = req.body.contribution
+    const contribution = req.body.contribution;
     const date = Date.now();
     db.query(`
     INSERT INTO contributions (content, date)
@@ -44,6 +45,7 @@ module.exports = (db) => {
         [user_id]))
       .then(data => {
         const username = data.rows
+        res.json(username,)
         newContribution(username, contribution)
       })
       .catch(err => {
