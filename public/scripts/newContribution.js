@@ -4,7 +4,6 @@ const newContribution= function(username, contribution) {
 
   $(() => {
 
-
     //find the tag we made within renderStory to attach this to
     const $newContributionSubmission = $(`.new-contribution-submission`);
 

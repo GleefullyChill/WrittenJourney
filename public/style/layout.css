@@ -1,6 +1,21 @@
 body {
-  background-color: #ec8116;
-}
-body h1 {
+  background-color: #eeec8d;
+  font-size: large;
+  color: h1;
   color: #244751;
+}
+
+nav {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: xx-large;
+  margin: 3 em;
+  background-color: gold;
+}
+.contribution {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
 }

@@ -10,6 +10,7 @@ const app        = express();
 const morgan     = require('morgan');
 const cookieSession = require('cookie-session');
 
+
 // PG database client/connection setup
 const { Pool } = require('pg');
 const dbParams = require('./lib/db.js');
@@ -42,11 +43,14 @@ app.use(cookieSession({
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
-const titlesRoutes = require('./routes/titles')
-const storyRoutes = require('./routes/story')
-const createStoryRoute = require('./routes/createStory')
-const createContribution = require('./routes/createContribution')
-const loginRoutes = require('./routes/login')
+const titlesRoutes = require('./routes/titles');
+const storyRoutes = require('./routes/story');
+const createStoryRoute = require('./routes/createStory');
+const createContributionRoutes = require('./routes/createContribution');
+const loginRoutes = require('./routes/login');
+const upvoteInfoRoutes = require('./routes/upvoteInfoRequest');
+const addContributionRoutes = require('./routes/addContribution')
+//const upvoteRoutes = require('./routes/upvote');
 
 
 // Mount all resource routes
@@ -55,9 +59,14 @@ app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/titles", titlesRoutes(db));
 app.use("/api/:story", storyRoutes(db));
+app.use("/api/upvote", upvoteInfoRoutes(db));
 app.use("/create", createStoryRoute(db));
-app.use("/:story/contribution", createContribution(db))
+app.use("/:story/contribute", createContributionRoutes(db));
 app.use("/login", loginRoutes(db));
+//app.use("/upvote", upvoteRoutes(db));
+//app.use("/:upvote/edit", upvoteRoutes(db));
+app.use("/add/:story/:contribute", addContributionRoutes(db));
+
 // Note: mount other resources here, using the same pattern above
 
 
