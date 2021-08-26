@@ -5,10 +5,18 @@ const loadTitles = function() {
   });
 };
  const loadStory = function(storyQuery) {
-    $.get(`/api/story?${storyQuery}`, (response) => {
-      renderStory(response);
-    });
-  };
+  $.get(`/api/story?${storyQuery}`, (response) => {
+    renderStory(response);
+  });
+};
+const getUpvoteInfo = function() {
+  $.get("/api/upvote", (response) => {
+    changeUpvote(response);
+  })
+}
+
+
+
 $(() => {
   // $.ajax({
   //   method: "GET",

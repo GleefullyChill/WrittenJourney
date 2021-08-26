@@ -1,9 +1,8 @@
 
-//called by the add_contribution.js route
+//called by the createContribution.js route
 const newContribution= function(username, contribution) {
 
   $(() => {
-
 
     //find the tag we made within renderStory to attach this to
     const $newContributionSubmission = $(`.new-contribution-submission`);
