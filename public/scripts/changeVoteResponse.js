@@ -2,37 +2,40 @@ const changeUpvoteResponse = function(status) {
   $(() => {
     const count = status[1];
     const bool = status[0];
-    const $upvote = $(`<p>`).text('&hearts');
-    const $upvoteNum = $(`<p>`).text ('0')
-    if (!count) {
-      $.post("/api/upvote",function(data){
-        db.query(`SELECT flag_voted FROM votes WHERE owner_id = $1 AND contribution_id = $2`[owner_id, contribution_id])
-      })
-      $(`<div>1`).addClass(red)
-      count++;
-      $(`<div>${count}`)
+    const contributionId = status[2];
+    const $upvote = $(`.upvote`);
+    const $upvoteNum = $(`.upvote-count`);
+
+    if (bool === undefined) {
+      const serializedData = `contribution_id=contribution`;
+      $.post("/upvote", serializedData)
+      $upvote.addClass('red');
+      count ++;
+      $upvoteNum.val(count);
       return;
     }
     if (bool === true) {
+      const serializedData = `status=false&contribution_id=${contributionId}`;
       $.ajax({
         type: "PATCH",
         url: "/api/upvote",
-        data: function(data){db.query(`UPDATE votes SET upvote = false WHERE owner_id = $1 AND contribution_id = $2`[owner_id, contribution_id])}
+        data: serializedData
       });
-        $upvote.addClass(red)
+        $upvote.addClass('red')
         count++;
-        $(`<div>${count}`)
+        $upvoteNum.val(count);
         return;
       }
       if (bool === false) {
+        const serializedData = `status=true&contribution_id=${contributionId}`;
         $.ajax({
           type: "PATCH",
           url: "/api/upvote",
-          data: function(data){db.query(`UPDATE votes SET upvote = TRUE WHERE owner_id = $1 AND contribution_id = $2`[owner_id, contribution_id])}
+          data: serializedData
         });
-          $(`<div>1`).removeClass()
+          $upvote.removeClass('red')
           count--;
-          $(`<div>${count}`)
+          $upvoteNum.val(count);
           return;
         }
 })
