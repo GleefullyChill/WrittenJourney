@@ -11,23 +11,24 @@ const renderStory = function(storyInformation) {
     const $activeStory = $(`.active-story`);
     $activeStory.empty();
 
-    console.log(story)
+
     //if nothing is here, that means database failed to provide a story for the given story_id
     if (story) {
 
       //create a story element from all the contributions currently active within the story and put it at the top of the container
       const $story = createStoryElement(story);
 
-      //check
+      //check whether owner of story
       if (userCheck) {
         const $button = $(`<button class="mark-complete" id="mark-complete-${storyId}" value="${storyId}" type="button">Mark This Story Complete!</button>`)
         $story.append($button);
+
         markCompleteButton(storyId);
       }
 
       $emptyContribution = $(`.no-contribution-yet`);
       $emptyContribution.removeClass(`.no-contribution-yet`);
-      console.log("contributions: ", contributions)
+      ("contributions: ", contributions)
       $activeStory.append($story)
       // //contributions is an array of objects to be turned into contribution elements
       for (const contribute of contributions) {
@@ -45,7 +46,7 @@ const renderStory = function(storyInformation) {
         //create a form underneath all of the contributions, action takes the story_id which is the passed here from the first story object
         const $contributionForm = $(`
 
-        <form class="create-contribution" value="story_id=${storyId}">
+        <form class="create-contribution" value="story_id=${storyId}" id="submit-content-${storyId}">
             <textarea id="contribution-text" value="story_id=${storyId}" placeholder = "You can contribute too!"></textarea>
 
             <div>

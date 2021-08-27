@@ -13,7 +13,7 @@ const submitContributionListener = function(storyId) {
       const $textarea = $(this).find(`[value="${serializedStoryId}"]`);
       // when the form is submitted, serialize the input
       const content = $textarea.val();
-      console.log(content)
+
       if (!content) {
         $textarea.append($(`<div class="error-container"></div>`));
         const $message = $('<h3>Please write something before you press submit!</h3>');
@@ -23,9 +23,10 @@ const submitContributionListener = function(storyId) {
 
         const serializedData = `content=${content}&${serializedStoryId}`
         $textarea.empty()
+
         // post the serialized data to the database, then fire the renderTitles func to load all the titles to the page
-        $.post(`/add/${serializedStoryId}/contribute`, serializedData).then(loadStory(serializedStoryId))
-        // after hitting submit button, textarea reset to null
+        postContribution(serializedData).then(loadStory(serializedStoryId))
+
 
       }
     })

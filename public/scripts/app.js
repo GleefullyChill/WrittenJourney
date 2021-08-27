@@ -1,7 +1,8 @@
 
 
-//this will make it client side SPA behaviour
+// All AJAX requests should be here
 
+//    GET
 const loadTitles = function() {
   $.get("/api/titles", (response) => {
     renderTitles(response);
@@ -14,19 +15,26 @@ const loadStory = function(storyQuery) {
 };
 const loadUpvote = function(serializedData) {
   $.get("/api/upvote", serializedData, (response) => {
-    return response
-  }).then(data => initialUpvoteInfo(data))
+    initialUpvoteInfo(response)
+  });
 }
 const getUpvoteInfo = function(serializedData) {
   $.get("/api/upvote", serializedData, (response) => {
     changeUpvoteResponse(response);
-  })
+  });
 }
 const getTitleInfo = function() {
   return $.get("/api/titles", (response) => {
     return response;
   });
 };
+
+//    POST
+const postContribution = function (serializedData) {
+  $.post(`/add/${serializedStoryId}/contribute`, serializedData)
+}
+
+//    Patch
 const addContributionToStory = function(serializedData) {
   $.ajax({
     type: "PATCH",
@@ -45,6 +53,7 @@ const changeComplete = function(serializedData) {
       loadTitles();
     })
 }
+
 
 $(() => {
 
