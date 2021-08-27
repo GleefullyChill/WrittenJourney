@@ -11,7 +11,7 @@ const renderStory = function(storyInformation) {
     const $activeStory = $(`.active-story`);
     $activeStory.empty();
 
-
+    console.log(story)
     //if nothing is here, that means database failed to provide a story for the given story_id
     if (story) {
 
@@ -25,6 +25,9 @@ const renderStory = function(storyInformation) {
         markCompleteButton(storyId);
       }
 
+      $emptyContribution = $(`.no-contribution-yet`);
+      $emptyContribution.removeClass(`.no-contribution-yet`);
+      console.log("contributions: ", contributions)
       $activeStory.append($story)
       // //contributions is an array of objects to be turned into contribution elements
       for (const contribute of contributions) {
@@ -44,9 +47,6 @@ const renderStory = function(storyInformation) {
 
         <form class="create-contribution" value="story_id=${storyId}">
             <textarea id="contribution-text" value="story_id=${storyId}" placeholder = "You can contribute too!"></textarea>
-
-        <form class="create-contribution" id="submit-content-${storyId}" value="story_id=${storyId}">
-            <textarea id="contribution-text" value="story_id=${storyId}" placeholder = "You can contribute too!">></textarea>
 
             <div>
               <button type="submit" class="form-button">Submit

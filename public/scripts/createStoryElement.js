@@ -8,10 +8,13 @@ const createStoryElement = function(storyInfo) {
   const storyDate = timeago.format(storyInfo[0].date);
   $date = $(`<div class="storyDate">`).text(storyDate);
 
-  if (storyInfo[0].content) {
+  if (storyInfo[0].content || storyInfo[1]) {
+
     //this will put the data into a manageble form for turning into HTML
     for (const contribution of storyInfo) {
-      story += `${contribution.content}\n`;
+      if (contribution.content) {
+        story += `${contribution.content}\n`;
+      }
     }
 
     $content = $(`<p>`).text(story);
