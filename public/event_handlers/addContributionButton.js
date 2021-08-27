@@ -15,9 +15,7 @@ const addContributionButton = function(id) {
       const urlEncodedData= $(this).attr("value");
 
       // app.js ajax
-      addContributionToStory(urlEncodedData).then(() => {
-        loadStory(urlEncodedData);
-      });
+      addContributionToStory(urlEncodedData);
     })
   })
 }

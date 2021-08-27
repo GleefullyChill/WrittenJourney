@@ -55,7 +55,7 @@ const addContributionToStory = function(urlEncodedData) {
     type: "PATCH",
     url: `/:story/:contribute`,
     data: urlEncodedData
-  })
+  }).then(() => loadStory(urlEncodedData));
 }
 const changeComplete = function(urlEncodedData) {
   $.ajax({

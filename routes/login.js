@@ -4,6 +4,7 @@ const router  = express.Router();
 module.exports = (db) => {
 // the register and login process is simplified for Demo purposes.
 router.get('/:user_id', (req, res) => {
+  req.session = null;
   const userId = req.params.user_id;
   req.session.user_id = userId;
 
