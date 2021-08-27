@@ -12,7 +12,7 @@ module.exports = (db) => {
 
   //will be called every time a title is clicked to show the full story and contributions
   router.get("/", (req, res) => {
-
+    console.log("story")
     const storyId = req.query.story_id;
     const username = req.session.username;
 

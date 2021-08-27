@@ -56,17 +56,23 @@ const upvoteRoutes = require('./routes/addUpvote');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
+
+//POST
+app.use("/create", createStoryRoute(db));
+app.use("/login", loginRoutes(db));
+app.use("/upvote", upvoteRoutes(db));
+
+//GET
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
 app.use("/api/titles", titlesRoutes(db));
-app.use("/api/:story", storyRoutes(db));
 app.use("/api/upvote", upvoteInfoRoutes(db));
-app.use("/create", createStoryRoute(db));
-app.use("/:story/contribute", createContributionRoutes(db));
-app.use("/login", loginRoutes(db));
-app.use("/upvote", upvoteRoutes(db));
-app.use("/:upvote/edit", upvoteChangeRoutes(db));
-app.use("/add/:story/:contribute", addContributionRoutes(db));
+app.use("/api/:story", storyRoutes(db));
+
+//PATCH
+app.use("/edit/:upvote", upvoteChangeRoutes(db));
+app.use("/:story/:contribute/", addContributionRoutes(db));
+app.use("/add/:story/contribute", createContributionRoutes(db));
 
 // Note: mount other resources here, using the same pattern above
 

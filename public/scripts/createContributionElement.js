@@ -9,13 +9,13 @@ const createContributionElement = function(contributionInfo, storyId, userCheck)
   const date = timeago.format(contributionInfo.date)
 
   if(content) {
-
+    console.log("createContributionElement")
     const $username = $(`<div>`).text(contributionInfo.username);
     const $content = $(`<p class="contribution-content" value=${contributionId}>`).text(content);
     const $date = $(`<div>`).text(date);
-    const $upvote = $(`<div class="upvote">`).text('&hearts');
+    const $upvote = $(`<div class="upvote" id="upvote-${contributionId}">`).text('&hearts');
 
-    const $upvoteNum = $(`<div class="upvote-count">`).html(0);
+    const $upvoteNum = $(`<div class="upvote-count" id="upvote-count-${contributionId}">`).html(0);
 
     //put it into this block of HTML
     const $contribution = $(`<section class="contribution" value="${storyId}">`).append(
@@ -25,14 +25,14 @@ const createContributionElement = function(contributionInfo, storyId, userCheck)
         $upvote,
         $upvoteNum
     )
-    upvoteButton()
+    upvoteButton(contributionId)
     //NEEDS AN UPVOTE button
 
     //send the HTML back
     if (userCheck) {
-      const $button = $(`<button class="add-contribution" id="${contributionId}" value="${storyId}" type="button">Add Contribution</button>`)
+      const $button = $(`<button class="add-contribution" id="add-contribution-${contributionId}" value="${storyId}" type="button">Add Contribution</button>`)
       $contribution.append($button);
-      addContributionButton();
+      addContributionButton(contributionId);
     }
     return $contribution;
   }

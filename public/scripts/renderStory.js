@@ -11,8 +11,6 @@ const renderStory = function(storyInformation) {
     const $activeStory = $(`.active-story`);
     $activeStory.empty();
 
-      //turn into an error, story is gone
-
 
     //find the place where the story has been activated
     if (story) {
@@ -20,15 +18,20 @@ const renderStory = function(storyInformation) {
       //create a story element from all the contributions currently active within the story and put it at the top of the container
       const $story = createStoryElement(story);
 
+      if (userCheck) {
+        const $button = $(`<button class="mark-complete" id="mark-complete-${storyId}" value="${storyId}" type="button">Mark This Story Complete!</button>`)
+        $story.append($button);
+        markCompleteButton(storyId);
+      }
+
       $activeStory.append($story)
-      //contributions is an array of objects to be turned into contribution elements
+      // //contributions is an array of objects to be turned into contribution elements
       for (const contribute of contributions) {
         const $contribute = createContributionElement(contribute, storyId, userCheck)
         //then add them to the active container from the bottom, first contribution first
         $activeStory.append($contribute);
       }
     }
-    //is this story complete
     getTitleInfo().then(data => {
       const titleInfo = data[storyId-1];
       if (!titleInfo.completed) {
@@ -47,7 +50,7 @@ const renderStory = function(storyInformation) {
           </form>
         `)
         $activeStory.append($contributionForm);
-        submitContributionListener();
+        submitContributionListener(storyId);
       }
     })
   })

@@ -7,7 +7,7 @@ const loadTitles = function() {
     renderTitles(response);
   });
 };
- const loadStory = function(storyQuery) {
+const loadStory = function(storyQuery) {
   $.get(`/api/story?${storyQuery}`, (response) => {
     renderStory(response);
   });
@@ -25,13 +25,12 @@ const getTitleInfo = function() {
 const addContributionToStory = function(storyId, contributionId) {
   const serializedData = `story_id=${storyId}&contribution_id=${contributionId}`
   $.ajax({
-    method: "PATCH",
-    url: `/add/${storyId}/${contributionId}`,
+    type: "PATCH",
+    url: `/${storyId}/${contributionId}`,
     data: serializedData
-  })
-  .then(() => {
-    loadStory(`story_id=${storyId}`);
-  })
+  }).then(() => {
+      loadStory(serializedData);
+    })
 }
 
 $(() => {

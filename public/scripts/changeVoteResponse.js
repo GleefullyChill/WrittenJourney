@@ -3,8 +3,8 @@ const changeUpvoteResponse = function(status) {
     const count = status[1];
     const bool = status[0];
     const contributionId = status[2];
-    const $upvote = $(`.upvote`);
-    const $upvoteNum = $(`.upvote-count`);
+    const $upvote = $(`#upvote-${contributionId}`);
+    const $upvoteNum = $(`#upvote-count-${contributionId}`);
 
     if (bool === undefined) {
       const serializedData = `contribution_id=contribution`;
@@ -19,7 +19,7 @@ const changeUpvoteResponse = function(status) {
       const serializedData = `status=false&contribution_id=${contributionId}`;
       $.ajax({
         type: "PATCH",
-        url: "/api/upvote",
+        url: `/edit/${contributionId}`,
         data: serializedData
       });
         $upvote.addClass('red')
@@ -32,7 +32,7 @@ const changeUpvoteResponse = function(status) {
         const serializedData = `status=true&contribution_id=${contributionId}`;
         $.ajax({
           type: "PATCH",
-          url: "/api/upvote",
+          url: `/edit/${contributionId}`,
           data: serializedData
         });
           $upvote.removeClass('red')
