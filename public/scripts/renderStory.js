@@ -3,7 +3,7 @@
 
 const renderStory = function(storyInformation) {
   $(() => {
-    const userCheck = storyInformation[0].splice(-1);
+    const userCheck = storyInformation[0].splice(-1)[0];
     //comes in with an arrary of 2 arrays
     const story = storyInformation[0];
     const contributions = storyInformation[1];
@@ -12,12 +12,13 @@ const renderStory = function(storyInformation) {
     $activeStory.empty();
 
 
-    //find the place where the story has been activated
+    //if nothing is here, that means database failed to provide a story for the given story_id
     if (story) {
 
       //create a story element from all the contributions currently active within the story and put it at the top of the container
       const $story = createStoryElement(story);
 
+      //check
       if (userCheck) {
         const $button = $(`<button class="mark-complete" id="mark-complete-${storyId}" value="${storyId}" type="button">Mark This Story Complete!</button>`)
         $story.append($button);
