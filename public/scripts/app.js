@@ -22,11 +22,10 @@ const getTitleInfo = function() {
     return response;
   });
 };
-const addContributionToStory = function(storyId, contributionId) {
-  const serializedData = `story_id=${storyId}&contribution_id=${contributionId}`
+const addContributionToStory = function(serializedData) {
   $.ajax({
     type: "PATCH",
-    url: `/${storyId}/${contributionId}`,
+    url: `/:story/:contribute`,
     data: serializedData
   }).then(() => {
       loadStory(serializedData);

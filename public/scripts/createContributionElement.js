@@ -30,7 +30,7 @@ const createContributionElement = function(contributionInfo, storyId, userCheck)
 
     //send the HTML back
     if (userCheck) {
-      const $button = $(`<button class="add-contribution" id="add-contribution-${contributionId}" value="${storyId}" type="button">Add Contribution</button>`)
+      const $button = $(`<button class="add-contribution" id="add-contribution-${contributionId}" value="story_id=${storyId}&contribution_id=${contributionId}" type="button">Add Contribution</button>`)
       $contribution.append($button);
       addContributionButton(contributionId);
     }
