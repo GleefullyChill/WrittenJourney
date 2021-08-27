@@ -21,6 +21,7 @@ module.exports = (db) => {
     WHERE owner_id = $1 AND contribution_id = $2`,
     [owner_id, contribution_id])
       .then(data => {
+        console.log(data.rows)
         if (data && data.rows && data.rows[0]) {
           const voteState = data.rows[0].flag_voted;
           voteArray.push(voteState);

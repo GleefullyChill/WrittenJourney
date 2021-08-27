@@ -6,7 +6,7 @@
 
 $(() => {
 
-  const errorEvent = function($errorMessage) {
+  const errorEvent = function($errorMessage, $errorOrigin) {
 
     //build the error HTML
     const $errorText = $('<h2>Error! </h2>');
@@ -19,5 +19,9 @@ $(() => {
 
     //add a handle to use when removing the message
     $errorContainer.addClass("errorNow");
+    $errorOrigin.append($errorContainer);
+    setTimeout((()=>{
+      $errorOrigin.remove($errorContainer);
+    }), 4000)
   };
 })
