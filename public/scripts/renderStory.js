@@ -11,7 +11,7 @@ const renderStory = function(storyInformation) {
     const $activeStory = $(`.active-story`);
     $activeStory.empty();
 
-
+    console.log(story)
     //if nothing is here, that means database failed to provide a story for the given story_id
     if (story) {
 
@@ -39,7 +39,7 @@ const renderStory = function(storyInformation) {
     }
     getTitleInfo().then(data => {
       const titleInfo = data[storyId-1];
-      if (!titleInfo.completed) {
+      if (!titleInfo || !titleInfo.completed) {
 
         //add a tag for us to stick any new contributions
         $newContribution = $(`<div="new-contribution-submission"></div>`)
