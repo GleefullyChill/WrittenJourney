@@ -17,7 +17,7 @@ const changeUpvoteResponse = function(statusArray) {
       // app.js ajzax call
       postUpvote(urlEncodedData);
       // adjust count and change HTML
-      $upvote.addClass('red');
+      $upvote.addClass('liked');
       count ++;
       $upvoteNum.empty();
       $upvoteNum.html(count);
@@ -27,11 +27,11 @@ const changeUpvoteResponse = function(statusArray) {
       // adjust variables
       if (bool === true) {
         count--;
-        $upvote.addClass('red');
+        $upvote.removeClass('liked');
         bool = false;
       } else {
         count++;
-        $upvote.removeClass('red');
+        $upvote.addClass('liked');
         bool = true
       }
 
