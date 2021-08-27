@@ -159,6 +159,8 @@ button {
  .completion-status{
   font-size:25px;
   padding-top: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
 }
 
 .date{
@@ -177,7 +179,8 @@ button {
       align-items: center;
 }
 .add-contribution{
-  padding-bottom: 1em;
+  //
+  margin-bottom: 1em;
 }
 
 // <section class="render-titles">
