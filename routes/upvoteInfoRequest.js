@@ -21,8 +21,12 @@ module.exports = (db) => {
     WHERE owner_id = $1 AND contribution_id = $2`,
     [owner_id, contribution_id])
       .then(data => {
-        const voteState = data.rows[0].flag_voted;
-        voteArray.push(voteState);
+        if (data && data.row && data.rows[0]) {
+          const voteState = data.rows[0].flag_voted;
+          voteArray.push(voteState);
+        } else {
+          voteArray.push("undefined");
+        }
       })
       .then(voteState => {
         db.query(`
@@ -40,6 +44,11 @@ module.exports = (db) => {
           .then(data => {
             res.json(data);
           })
+          .catch(err => {
+            res
+              .status(500)
+              .json({ error: err.message });
+          });
 
         return voteState;
       })

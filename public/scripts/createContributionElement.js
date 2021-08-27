@@ -9,13 +9,12 @@ const createContributionElement = function(contributionInfo, storyId, userCheck)
   const date = timeago.format(contributionInfo.date)
 
   if(content) {
-
     const $username = $(`<div>`).text(contributionInfo.username);
     const $content = $(`<p class="contribution-content" value=${contributionId}>`).text(content);
     const $date = $(`<div>`).text(date);
-    const $upvote = $(`<div class="upvote">`).text('&hearts');
 
-    const $upvoteNum = $(`<div class="upvote-count">`).html(0);
+    const $upvote = $(`<div class="upvote" id="upvote-${contributionId}" value="${contributionId}">`).text('&hearts');
+    const $upvoteNum = $(`<div class="upvote-count" id="upvote-count-${contributionId}">`).html(0);
 
     //put it into this block of HTML
     const $contribution = $(`<section class="contribution" value="${storyId}">`).append(
@@ -25,14 +24,18 @@ const createContributionElement = function(contributionInfo, storyId, userCheck)
         $upvote,
         $upvoteNum
     )
-    upvoteButton()
-    //NEEDS AN UPVOTE button
 
-    //send the HTML back
+    upvoteButton(contributionId)
+
+    loadUpvote(`contribution_id=${contributionId}`)
+
+
+
+    //check user for ownership of this story
     if (userCheck) {
-      const $button = $(`<button class="add-contribution" id="${contributionId}" value="${storyId}" type="button">Add Contribution</button>`)
+      const $button = $(`<button class="add-contribution" id="add-contribution-${contributionId}" value="story_id=${storyId}&contribution_id=${contributionId}" type="button">Add Contribution</button>`)
       $contribution.append($button);
-      addContributionButton();
+      addContributionButton(contributionId);
     }
     return $contribution;
   }

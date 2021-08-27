@@ -1,11 +1,10 @@
-const addContributionButton = function() {
+const addContributionButton = function(id) {
   $(() => {
-    const $addContributionButton = $('.add-contribution')
+    const $addContributionButton = $(`#add-contribution-${id}`)
     $addContributionButton.on('click', function(event) {
       $(this).unbind("click");
-      const contributionId = $(this).attr("id");
-      const storyId = $(this).attr("value");
-      addContributionToStory(storyId, contributionId);
+      const serializedData= $(this).attr("value");
+      addContributionToStory(serializedData);
     })
   })
 }

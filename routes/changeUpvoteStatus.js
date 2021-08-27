@@ -14,7 +14,7 @@ module.exports = (db) => {
 
       db.query(`
         UPDATE votes
-        SET upvote = $1
+        SET flag_voted = $1
         WHERE owner_id = $2 AND contribution_id = $3;`,
         [status, owner_id, contribution_id])
 
