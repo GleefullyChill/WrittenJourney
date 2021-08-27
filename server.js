@@ -52,6 +52,7 @@ const upvoteInfoRoutes = require('./routes/upvoteInfoRequest');
 const addContributionRoutes = require('./routes/addContribution')
 const upvoteChangeRoutes = require('./routes/changeUpvoteStatus');
 const upvoteRoutes = require('./routes/addUpvote');
+const changeCompleteRoute = require("./routes/changeComplete");
 
 
 // Mount all resource routes
@@ -70,9 +71,11 @@ app.use("/api/upvote", upvoteInfoRoutes(db));
 app.use("/api/:story", storyRoutes(db));
 
 //PATCH
+app.use("/complete/:story", changeCompleteRoute(db))
 app.use("/edit/:upvote", upvoteChangeRoutes(db));
-app.use("/:story/:contribute/", addContributionRoutes(db));
 app.use("/add/:story/contribute", createContributionRoutes(db));
+app.use("/:story/:contribute/", addContributionRoutes(db));
+
 
 // Note: mount other resources here, using the same pattern above
 

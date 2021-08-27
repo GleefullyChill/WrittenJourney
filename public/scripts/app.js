@@ -31,6 +31,15 @@ const addContributionToStory = function(serializedData) {
       loadStory(serializedData);
     })
 }
+const changeComplete = function(serializedData) {
+  $.ajax({
+    type: "PATCH",
+    url: `complete/${serializedData}`,
+    data: serializedData
+  }).then(() => {
+      loadTitles();
+    })
+}
 
 $(() => {
 
