@@ -25,6 +25,9 @@
 
 <!-- Google Fonts -->
 <!-- After we choose our fonts, add it here -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
 
 <!-- App CSS -->
     <!-- css sheets will be applied accordingly, the last being processed will win the form! -->
@@ -34,14 +37,14 @@
 </head>
 <body>
    <!-- Top nav bar -->
-   <nav>
+   <nav class= "navbar">
     <span class="logo">Written Journey</span>
     <span class="write">
-      <span class="toggle-switch"><span class="bold">Create </span>a new story</span>
+      <span class="toggle-switch">Create a new story</span>
       <i class="fas fa-angle-double-down"></i>
     </span>
-    <span class="button">Login</span>
-    <span class="button">Register</span>
+    <!-- <span class="button">Login</span>
+    <span class="button">Register</span> -->
   </nav>
 
  <!-- Page-specific (main) content here -->
@@ -52,19 +55,19 @@
    <!-- use css to display none -->
    <section class="create-story-container">
     <form class='create-story'>
-      <label>author name:</label>
+      <!-- <label>author name:</label>
       <input name="authorName"/>
+      <br/> -->
+
+      <!-- <label>title:</label> -->
+      <input placeholder="What would you like to name your story?" name="title" id="title"></input>
       <br/>
 
-      <label>title:</label>
-      <textarea placeholder="What would you like to name your story?" name="title" id="title"></textarea>
-      <br/>
-
-      <label>abstract:</label>
-      <textarea name="abstract" id="abstract" placeholder="tell us what this story is about!"
+      <!-- <label>abstract:</label> -->
+      <textarea name="abstract" id="abstract" placeholder="Tell us what this story is about!"
       ></textarea>
       <br/>
-      <button type="submit">Submit!</button>
+      <button type="submit" class = "createStorySubmit">Submit!</button>
 
     </form>
 
@@ -74,12 +77,12 @@
   <section class="render-titles"></section>
 
    <!-- render story section -->
-   <section class="render-story"></section>
+   <!-- <section class="render-story"></section>
 
-   <!-- render contribution section when the creater has not chosen the favourite one, the vote button should go in here as well-->
-   <section class="create-story"></section>
+    render contribution section when the creater has not chosen the favourite one, the vote button should go in here as well-->
+   <!-- <section class="create-story"></section> --> -->
 
-   <!-- creat a new contribution section -->
+   <!-- creat a new contribution section
    <section class="create-contribution">
     <form id=create-contribution>
       <label>user name:</label>
@@ -89,10 +92,10 @@
      <label>content:</label>
      <textarea placeholder="What would you like to contribute to the story?" name="content" id="content"></textarea>
     <br/>
-    <button type="submit">Submit!</button>
+    <button type="submit">Submit!</button> -->
 
 
-
+    </main>
 </body>
 <!-- App JS all the func.js files should go here, and use doc.ready at the top of pages.-->
 <script src="/scripts/renderStory.js"></script>

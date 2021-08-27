@@ -4,11 +4,12 @@
 const createTitleElement = function(title) {
 
   const storyId = title.story_id;
-  const $username = $(`<div>`).text(title.username);
-  const $titleText = $(`<h3>`).text(title.title);
+  const $username = $(`<div class='abstracts'>`).text(title.username);
+  const $titleText = $(`<h2 class='titles abstracts'>`).text(title.title);
+  // const $abstract = $('<p class="abstracts>').text(title.abstract)
   const $storyButton = $(`<p>`).text('Expand!').addClass("render-story-button");
-  const $abstract = $(`<p>`).text(title.abstract).append($storyButton)
-
+  const $abstract = $(`<p class="story-container">`).text(title.abstract).append($storyButton)
+ console.log($abstract)
   const $storyId = $(`<output class="story-id" value="${storyId}">`).val(storyId)
 
   let $status;
