@@ -1,13 +1,13 @@
 const changeUpvoteResponse = function(status) {
   $(() => {
-    const count = status[1];
+    let count = status[1];
     const bool = status[0];
     const contributionId = status[2];
-    const $upvote = $(`.upvote`);
-    const $upvoteNum = $(`.upvote-count`);
+    const $upvote = $(`#upvote-${contributionId}`);
+    const $upvoteNum = $(`#upvote-count-${contributionId}`);
 
-    if (bool === undefined) {
-      const serializedData = `contribution_id=contribution`;
+    if (bool === "undefined") {
+      const serializedData = `contribution_id=${contributionId}`;
       $.post("/upvote", serializedData)
       $upvote.addClass('red');
       count ++;
@@ -19,7 +19,7 @@ const changeUpvoteResponse = function(status) {
       const serializedData = `status=false&contribution_id=${contributionId}`;
       $.ajax({
         type: "PATCH",
-        url: "/api/upvote",
+        url: `/edit/${contributionId}`,
         data: serializedData
       });
         $upvote.addClass('red')
@@ -27,19 +27,20 @@ const changeUpvoteResponse = function(status) {
         $upvoteNum.empty();
         $upvoteNum.html(count);
         return;
-      }
-      if (bool === false) {
-        const serializedData = `status=true&contribution_id=${contributionId}`;
-        $.ajax({
-          type: "PATCH",
-          url: "/api/upvote",
-          data: serializedData
-        });
-          $upvote.removeClass('red')
-          count--;
-          $upvoteNum.empty();
-          $upvoteNum.html(count);
-          return;
-        }
+    }
+    if (bool === false) {
+      const serializedData = `status=true&contribution_id=${contributionId}`;
+      $.ajax({
+        type: "PATCH",
+        url: `/edit/${contributionId}`,
+        data: serializedData
+      });
+        $upvote.removeClass('red')
+        count--;
+        $upvoteNum.empty();
+        $upvoteNum.html(count);
+        return;
+    }
+    return console.log("Complete!");
 })
 }

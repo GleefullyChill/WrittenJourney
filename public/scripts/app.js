@@ -1,14 +1,22 @@
 
+
+//this will make it client side SPA behaviour
+
 const loadTitles = function() {
   $.get("/api/titles", (response) => {
     renderTitles(response);
   });
 };
- const loadStory = function(storyQuery) {
+const loadStory = function(storyQuery) {
   $.get(`/api/story?${storyQuery}`, (response) => {
     renderStory(response);
   });
 };
+const loadUpvote = function(serializedData) {
+  $.get("/api/upvote", serializedData, (response) => {
+    return response
+  }).then(data => initialUpvoteInfo(data))
+}
 const getUpvoteInfo = function(serializedData) {
   $.get("/api/upvote", serializedData, (response) => {
     changeUpvoteResponse(response);
@@ -19,52 +27,29 @@ const getTitleInfo = function() {
     return response;
   });
 };
-const addContributionToStory = function(storyId, contributionId) {
-  const serializedData = `story_id=${storyId}&contribution_id=${contributionId}`
+const addContributionToStory = function(serializedData) {
   $.ajax({
-    method: "PATCH",
-    url: `/add/${storyId}/${contributionId}`,
+    type: "PATCH",
+    url: `/:story/:contribute`,
     data: serializedData
-  })
-  .then(() => {
-    loadStory(`story_id=${storyId}`);
-  })
+  }).then(() => {
+      loadStory(serializedData);
+    })
+}
+const changeComplete = function(serializedData) {
+  $.ajax({
+    type: "PATCH",
+    url: `complete/${serializedData}`,
+    data: serializedData
+  }).then(() => {
+      loadTitles();
+    })
 }
 
 $(() => {
-  // $.ajax({
-  //   method: "GET",
-  //   url: "/api/users"
-  // }).done((users) => {
-  //   for(user of users) {
-  //     $("<div>").text(user.name).appendTo($("body"));
-  //   }
-  // });;
 
-  //this will make it client side SPA behaviour
+  // Once everything's loaded, start it up!
 
   loadTitles()
 
-
-
-  // $.post(/*route here*/)
-   //  .then((/*what the route returns*/) => {})
-
-  // $.post(/*route here*/)
-  //   .then((/*what the route returns*/) => {})
-
-  // $.post(/*route here*/)
-  //   .then((/*what the route returns*/) => {})
-
-  // $.ajax({
-  //   method: "PATCH",
-  //   url: "/api/users"
-
-  // $.ajax({
-  //   method: "PATCH",
-  //   url: "/api/users"
-
-  // $.ajax({
-  //   method: "PATCH",
-  //   url: "/api/users"
 });
