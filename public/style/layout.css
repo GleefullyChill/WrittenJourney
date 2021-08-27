@@ -62,11 +62,7 @@ button {
   font-family: "Caveat", cursive;
 }
 .container .create-story-container .render-titles {
-  background-color: orchid;
-}
-.container .create-story-container .render-titles .story-id {
-  font-size: 1px;
-  color: #eeec8d;
+  border: 5px solid red;
 }
 .container .create-story-container .render-titles .titles {
   font-family: "Caveat", cursive;
@@ -84,13 +80,79 @@ button {
 }
 
 .upvote-count {
-  color: red;
+  color: #244751;
 }
 
 .upvote {
-  color: paleturquoise;
+  width: 50px;
+  height: 50px;
+  padding: 0.3em;
+}
+.upvote.liked svg {
+  color: red;
+}
+.upvote svg {
+  color: white;
 }
 
 .abstracts {
   font-family: "Caveat", cursive;
+}
+
+.story-container {
+  font-family: "Caveat", cursive;
+}
+.story-container .render-story-button {
+  font-family: sans-serif;
+}
+
+.story-id {
+  font-size: 1px;
+  color: #eeec8d;
+}
+
+.title {
+  padding-bottom: 5rem;
+}
+
+#contribution-text {
+  font-family: "Caveat", cursive;
+  padding-left: 2px;
+  width: 850px;
+  height: 500px;
+}
+
+.contribution-content {
+  font-family: "Caveat", cursive;
+}
+
+.contribution-owner {
+  font-family: "Caveat", cursive;
+}
+
+.completion-status {
+  font-size: 25px;
+  padding-top: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+
+.date {
+  font-size: 25px;
+  padding-bottom: 1em;
+}
+
+.form-button {
+  margin-top: 1em;
+}
+
+.vote-div {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+}
+
+.add-contribution {
+  margin-bottom: 1em;
 }
