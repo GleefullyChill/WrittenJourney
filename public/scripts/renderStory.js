@@ -45,8 +45,6 @@ const renderStory = function(storyInformation) {
         <form class="create-contribution" value="story_id=${storyId}">
             <textarea id="contribution-text" value="story_id=${storyId}" placeholder = "You can contribute too!"></textarea>
 
-        <form class="create-contribution" id="submit-content-${storyId}" value="story_id=${storyId}">
-            <textarea id="contribution-text" value="story_id=${storyId}" placeholder = "You can contribute too!">></textarea>
 
             <div>
               <button type="submit" class="form-button">Submit
