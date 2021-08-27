@@ -17,10 +17,10 @@ const renderStoryButton = function(storyId) {
       $(this).addClass('active-story')
 
       const storyId = $(this).parent().parent().find(".story-id").val()
-      const serializedData = `story_id=${storyId}`;
+      const urlEncodedData = `story_id=${storyId}`;
 
-      loadStory(serializedData)
-
+      //app.js ajax call
+      loadStory(urlEncodedData);
     });
   })
 }

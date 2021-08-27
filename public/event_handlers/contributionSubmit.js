@@ -21,11 +21,11 @@ const submitContributionListener = function(storyId) {
 
       } else {
 
-        const serializedData = `content=${content}&${serializedStoryId}`
+        const urlEncodedData = `content=${content}&${serializedStoryId}`
         $textarea.empty()
 
         // post the serialized data to the database, then fire the renderTitles func to load all the titles to the page
-        postContribution(serializedData).then(loadStory(serializedStoryId))
+        postContribution(urlEncodedData, serializedStoryId);
 
 
       }

@@ -13,13 +13,13 @@ const loadStory = function(storyQuery) {
     renderStory(response);
   });
 };
-const loadUpvote = function(serializedData) {
-  $.get("/api/upvote", serializedData, (response) => {
+const loadUpvote = function(urlEncodedData) {
+  $.get("/api/upvote", urlEncodedData, (response) => {
     initialUpvoteInfo(response)
   });
 }
-const getUpvoteInfo = function(serializedData) {
-  $.get("/api/upvote", serializedData, (response) => {
+const getUpvoteInfo = function(urlEncodedData) {
+  $.get("/api/upvote", urlEncodedData, (response) => {
     changeUpvoteResponse(response);
   });
 }
@@ -30,28 +30,39 @@ const getTitleInfo = function() {
 };
 
 //    POST
-const postContribution = function (serializedData) {
-  $.post(`/add/${serializedStoryId}/contribute`, serializedData)
-}
+const postStory = function(urlEncodedData) {
+  $.post('/create', urlEncodedData)
+    .then(() => loadTitles());
+};
+const postContribution = function (urlEncodedData, serializedStoryId) {
+  $.post(`/add/${serializedStoryId}/contribute`, urlEncodedData)
+    .then(() => loadStory(serializedStoryId));
+};
+const postUpvote = function(urlEncodedData) {
+  $.post("/upvote", urlEncodedData);
+};
 
 //    Patch
-const addContributionToStory = function(serializedData) {
+const editVoteStatus = function(urlEncodedData, contributionId) {
+  $.ajax({
+    type: "PATCH",
+    url: `/edit/${contributionId}`,
+    data: urlEncodedData
+  });
+};
+const addContributionToStory = function(urlEncodedData) {
   $.ajax({
     type: "PATCH",
     url: `/:story/:contribute`,
-    data: serializedData
-  }).then(() => {
-      loadStory(serializedData);
-    })
+    data: urlEncodedData
+  })
 }
-const changeComplete = function(serializedData) {
+const changeComplete = function(urlEncodedData) {
   $.ajax({
     type: "PATCH",
-    url: `complete/${serializedData}`,
-    data: serializedData
-  }).then(() => {
-      loadTitles();
-    })
+    url: `complete/${urlEncodedData}`,
+    data: urlEncodedData
+  })
 }
 
 
@@ -59,6 +70,6 @@ $(() => {
 
   // Once everything's loaded, start it up!
 
-  loadTitles()
-
+  loadTitles();
+  createStorySubmit();
 });
