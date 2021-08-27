@@ -10,12 +10,12 @@ const upvoteButton = function(id) {
 
        $upvoteButton.addClass('liked');
 
-   
+
       const contributionId = $(this).attr("value")
 
-      const serializedData = `contribution_id=${contributionId}`
+      const urlEncodedData = `contribution_id=${contributionId}`
 
-      getUpvoteInfo(serializedData);
+      getUpvoteInfo(urlEncodedData);
     })
 
   })

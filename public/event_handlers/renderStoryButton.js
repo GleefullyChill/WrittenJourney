@@ -13,18 +13,14 @@ const renderStoryButton = function(storyId) {
       const $currentActiveTitle = $('.active-story')
       $currentActiveTitle.removeClass('active-story');
 
-
+      //For future use: can have the active story styled differently
       $(this).addClass('active-story')
 
       const storyId = $(this).parent().parent().find(".story-id").val()
-      const serializedData = `story_id=${storyId}`;
-      $.get('/api/:story', serializedData)
+      const urlEncodedData = `story_id=${storyId}`;
 
-        .then(loadStory(serializedData))
-
-        .catch(err => {
-          console.log(500, "error in renderStory")
-        });
+      //app.js ajax call
+      loadStory(urlEncodedData);
     });
   })
 }

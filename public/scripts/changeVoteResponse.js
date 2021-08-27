@@ -1,46 +1,47 @@
-const changeUpvoteResponse = function(status) {
+const changeUpvoteResponse = function(statusArray) {
   $(() => {
-    let count = status[1];
-    const bool = status[0];
-    const contributionId = status[2];
+
+    // dissect the statusArray
+    let count = statusArray[1];
+    let bool = statusArray[0];
+    const contributionId = statusArray[2];
+
+    // jQuery
     const $upvote = $(`#upvote-${contributionId}`);
     const $upvoteNum = $(`#upvote-count-${contributionId}`);
 
+    // two routes, POST or PATCH
     if (bool === "undefined") {
-      const serializedData = `contribution_id=${contributionId}`;
-      $.post("/upvote", serializedData)
+
+      const urlEncodedData = `contribution_id=${contributionId}`;
+      // app.js ajzax call
+      postUpvote(urlEncodedData);
+      // adjust count and change HTML
       $upvote.addClass('red');
       count ++;
       $upvoteNum.empty();
       $upvoteNum.html(count);
-      return;
     }
-    if (bool === true) {
-      const serializedData = `status=false&contribution_id=${contributionId}`;
-      $.ajax({
-        type: "PATCH",
-        url: `/edit/${contributionId}`,
-        data: serializedData
-      });
-        $upvote.addClass('red')
-        count++;
-        $upvoteNum.empty();
-        $upvoteNum.html(count);
-        return;
-    }
-    if (bool === false) {
-      const serializedData = `status=true&contribution_id=${contributionId}`;
-      $.ajax({
-        type: "PATCH",
-        url: `/edit/${contributionId}`,
-        data: serializedData
-      });
-        $upvote.removeClass('red')
+     else {
+       console.log(bool)
+      // adjust variables
+      if (bool === true) {
         count--;
-        $upvoteNum.empty();
-        $upvoteNum.html(count);
-        return;
+        $upvote.addClass('red');
+        bool = false;
+      } else {
+        count++;
+        $upvote.removeClass('red');
+        bool = true
+      }
+
+      // changes to HTML
+      $upvoteNum.empty();
+      $upvoteNum.html(count);
+
+      const urlEncodedData = `status=${bool}&contribution_id=${contributionId}`;
+      // app.js azax call
+      editVoteStatus(urlEncodedData, contributionId);
     }
-    return console.log("Complete!");
 })
 }
