@@ -12,6 +12,11 @@ const loadStory = function(storyQuery) {
     renderStory(response);
   });
 };
+const loadUpvote = function(serializedData) {
+  $.get("/api/upvote", serializedData, (response) => {
+    return response
+  }).then(data => initialUpvoteInfo(data))
+}
 const getUpvoteInfo = function(serializedData) {
   $.get("/api/upvote", serializedData, (response) => {
     changeUpvoteResponse(response);

@@ -23,9 +23,7 @@ const renderStoryButton = function(storyId) {
         .then(loadStory(serializedData))
 
         .catch(err => {
-          res
-            .status(500)
-            .json({ error: err.message });
+          console.log(500, "error in renderStory")
         });
     });
   })

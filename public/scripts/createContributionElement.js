@@ -9,11 +9,10 @@ const createContributionElement = function(contributionInfo, storyId, userCheck)
   const date = timeago.format(contributionInfo.date)
 
   if(content) {
-    console.log("createContributionElement")
     const $username = $(`<div>`).text(contributionInfo.username);
     const $content = $(`<p class="contribution-content" value=${contributionId}>`).text(content);
     const $date = $(`<div>`).text(date);
-    const $upvote = $(`<div class="upvote" id="upvote-${contributionId}">`).text('&hearts');
+    const $upvote = $(`<div class="upvote" id="upvote-${contributionId}" value="${contributionId}">`).text('&hearts');
 
     const $upvoteNum = $(`<div class="upvote-count" id="upvote-count-${contributionId}">`).html(0);
 
@@ -26,7 +25,10 @@ const createContributionElement = function(contributionInfo, storyId, userCheck)
         $upvoteNum
     )
     upvoteButton(contributionId)
-    //NEEDS AN UPVOTE button
+
+    loadUpvote(`contribution_id=${contributionId}`)
+
+
 
     //send the HTML back
     if (userCheck) {

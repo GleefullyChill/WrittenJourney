@@ -14,7 +14,6 @@ router.get('/:user_id', (req, res) => {
   [userId])
   .then(data => {
     const username = data.rows[0];
-    console.log("login")
     req.session.username = username;
     res.redirect('/')
   })

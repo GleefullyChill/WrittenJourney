@@ -2,7 +2,7 @@
 //called in renderTitles.js and createStorySubmit.js
 
 const createTitleElement = function(title) {
-  console.log("createTitleElement")
+
   const storyId = title.story_id;
   const $username = $(`<div>`).text(title.username);
   const $titleText = $(`<h3>`).text(title.title);
