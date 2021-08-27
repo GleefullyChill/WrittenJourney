@@ -13,7 +13,9 @@ const createContributionElement = function(contributionInfo, storyId, userCheck)
     const $content = $(`<p class="contribution-content" value=${contributionId}>`).text(content);
     const $date = $(`<div>`).text(date);
 
-    const $upvote = $(`<div class="upvote" id="upvote-${contributionId}" value="${contributionId}">`).text('&hearts');
+    const $upvote = $(`<div class="upvote" id="upvote-${contributionId}" value="${contributionId}">`).append($(`
+    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24"><path d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z"/></svg>
+    `));
     const $upvoteNum = $(`<div class="upvote-count" id="upvote-count-${contributionId}">`).html(0);
 
     //put it into this block of HTML

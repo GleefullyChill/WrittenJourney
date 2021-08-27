@@ -1,21 +1,96 @@
 body {
   background-color: #eeec8d;
-  font-size: large;
-  color: h1;
+  font-size: 50px;
+  color: #244751;
+}
+body h1 {
   color: #244751;
 }
 
-nav {
-  height: 100px;
+button {
+  background-color: orange;
+  border-radius: 5px;
+}
+
+.navbar {
+  height: 200px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: xx-large;
-  margin: 3 em;
   background-color: gold;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
-.contribution {
+.navbar .logo {
+  padding-top: 0.4em;
+  padding-left: 1em;
+  font-weight: bold;
+  font-family: "Caveat", cursive;
+  font-size: 2.5em;
+}
+.navbar .write {
+  padding-right: 2em;
+  padding-top: 0.7em;
+  font-size: 1.5em;
+}
+
+.container {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px;
+}
+.container .create-story-container .create-story {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+.container .create-story-container .create-story #title {
+  padding: 5px;
+  width: 850px;
+  height: 70px;
+  margin-top: 30px;
+  font-family: "Caveat", cursive;
+}
+.container .create-story-container .create-story #abstract {
+  padding: 5px;
+  width: 850px;
+  height: 500px;
+  font-family: "Caveat", cursive;
+}
+.container .create-story-container .render-titles {
+  background-color: orchid;
+}
+.container .create-story-container .render-titles .story-id {
+  font-size: 1px;
+  color: #eeec8d;
+}
+.container .create-story-container .render-titles .titles {
+  font-family: "Caveat", cursive;
+}
+.container .create-story-container .contribution {
   display: flex;
   flex-direction: row;
   align-content: center;
+}
+.container .create-story-container .create-contribution {
+  padding-bottom: 2em;
+}
+.container .create-story-container .create-contribution .form-button {
+  background-color: peru;
+}
+
+.upvote-count {
+  color: red;
+}
+
+.upvote {
+  color: paleturquoise;
+}
+
+.abstracts {
+  font-family: "Caveat", cursive;
 }

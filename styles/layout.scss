@@ -2,33 +2,169 @@
 
 body {
   background-color: rgb(238, 236, 141);
-  font-size: large;
-  color:
+  font-size: 50px;
+  color: #244751;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+
   h1 {
     color: #244751;
   }
 }
 
-nav {
-  height : 100px;
+button {
+  background-color: orange;
+  border-radius: 5px;
+}
+
+.navbar {
+  height: 200px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  font-size: xx-large;
-  margin: 3 em;
   background-color: gold;
-
+  position: fixed;
+  top:0;
+  width: 100%;
 
   .logo {
-    // padding: 3em
+    padding-top:0.4em;
+    padding-left:1em;
+    font-weight: bold;
+    font-family: 'Caveat', cursive;
+    font-size: 2.5em;
 
-
+  }
+  .write {
+    padding-right:2em;
+    padding-top: 0.7em;
+    font-size: 1.5em;
   }
 }
 
-.contribution{
+.container {
+  margin-top: 200px;
   display: flex;
-  flex-direction: row;
-  align-content:center
+  flex-direction: column;
+  align-items: center;
+  padding: 100px;
 
+  .create-story-container {
+    .create-story {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      align-items: center;
+
+      #title {
+        padding: 5px;
+        width: 850px;
+        height: 70px;
+        margin-top: 30px;
+        font-family: 'Caveat', cursive;
+      }
+      #abstract {
+        padding: 5px;
+        width: 850px;
+        height: 500px;
+        font-family: 'Caveat', cursive;
+      }
+    }
+
+    // render story area
+    .render-titles{
+
+      background-color: orchid;
+
+      //
+      .titles{
+        font-family: 'Caveat', cursive;
+      }
+    }
+    //
+    .contribution {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      // .upvote{
+      //   color:paleturquoise;
+      // }
+      //
+      // .upvote-count{
+      //   color:red;
+      // }
+
+    }
+    //
+    .create-contribution{
+      padding-bottom: 2em;
+      .form-button{
+        background-color: peru;
+      }
+
+    }
+  }
 }
+
+.upvote-count{
+  color:red;
+}
+.upvote{
+  width:50px;
+  height:50px;
+  &.liked svg{color:red}
+  svg{
+    color:white;
+
+  }
+}
+.abstracts{font-family: 'Caveat', cursive;}
+.story-container{
+
+    font-family: 'Caveat', cursive;
+  .render-story-button{
+    font-family: sans-serif;
+  }
+}
+.story-id{
+  font-size: 1px;
+  color:rgb(238, 236, 141)
+}
+
+.title{
+  padding-bottom: 5rem;
+}
+// <section class="render-titles">
+// $storyId = $(`<output class="story-id" value="${storyId}">`).val(storyId)
+// $username = $(`<div>`).text(title.username);
+//   const $titleText = $(`<h3>`).text(title.title);
+//   const $storyButton = $(`<p>`).text('Expand!').addClass("render-story-button");
+//   const $abstract = $(`<p>`).text(title.abstract).append($storyButton)
+
+// </output>
+// </section>
+
+
+// `<section class="contribution" value="${storyId}">`
+
+// `<div>`contributionInfo.username <div>
+// <p class="contribution-content" value=${contributionId}>`
+// `<div>`).text(date)
+// `<div class="upvote">`).text('&hearts')
+// `<div class="upvote-count">`).html(0)
+// <button class="add-contribution" id="${contributionId}"
+// value="${storyId}" type="button">Add Contribution</button>
+
+// </section>
+
+// <div="new-contribution-submission">
+// <form class="create-contribution" value="story_id=${storyId}">
+//             <textarea id="contribution-text" value="story_id=${storyId}" placeholder = "You can contribute too!"></textarea>
+//             <label for="contribution-text"> You can contribute too!
+//             <div>
+//               <button type="submit" class="form-button">Submit
+//             </div>
+
+//           </form>
+//           </div>
