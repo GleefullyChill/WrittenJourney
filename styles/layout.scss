@@ -44,6 +44,7 @@ button {
 }
 
 .container {
+
   margin-top: 200px;
   display: flex;
   flex-direction: column;
@@ -74,8 +75,9 @@ button {
 
     // render story area
     .render-titles{
+      border: 5px solid red;
 
-      background-color: orchid;
+      // background-color: orchid;
 
       //
       .titles{
@@ -87,16 +89,7 @@ button {
       display: flex;
       flex-direction: row;
       align-content: center;
-      // .upvote{
-      //   color:paleturquoise;
-      // }
-      //
-      // .upvote-count{
-      //   color:red;
-      // }
-
     }
-    //
     .create-contribution{
       padding-bottom: 2em;
       .form-button{
@@ -108,11 +101,13 @@ button {
 }
 
 .upvote-count{
-  color:red;
+  color:#244751;;
 }
 .upvote{
   width:50px;
   height:50px;
+  padding:0.3em;
+  // padding-left:none;
   &.liked svg{color:red}
   svg{
     color:white;
@@ -129,12 +124,62 @@ button {
 }
 .story-id{
   font-size: 1px;
-  color:rgb(238, 236, 141)
+  color:rgb(238, 236, 141);
+
 }
 
 .title{
   padding-bottom: 5rem;
 }
+
+// .active-story{
+//   padding:100px;
+// }
+
+#contribution-text{
+  font-family: 'Caveat', cursive;
+  padding-left: 2px;
+  width: 850px;
+  height: 500px;
+
+}
+
+// .render-story-button{
+//   text-decoration:underline;
+// }
+
+.contribution-content{
+  font-family: 'Caveat', cursive;
+}
+
+.contribution-owner{
+  font-family: 'Caveat', cursive;
+}
+
+ .completion-status{
+  font-size:25px;
+  padding-top: 1em;
+}
+
+.date{
+  font-size:25px;
+  padding-bottom: 1em;
+}
+
+.form-button{
+  margin-top:1em;
+}
+
+.vote-div{
+  display: flex;
+      flex-direction: row;
+      align-content: center;
+      align-items: center;
+}
+.add-contribution{
+  padding-bottom: 1em;
+}
+
 // <section class="render-titles">
 // $storyId = $(`<output class="story-id" value="${storyId}">`).val(storyId)
 // $username = $(`<div>`).text(title.username);

@@ -10,15 +10,14 @@ const createTitleElement = function(title) {
   // const $abstract = $('<p class="abstracts>').text(title.abstract)
   const $storyButton = $(`<p id="expand-story-${storyId}">`).text('Expand!').addClass("render-story-button");
   const $abstract = $(`<p class="story-container">`).text(title.abstract).append($storyButton)
- console.log($abstract)
   const $storyId = $(`<output class="story-id" value="${storyId}">`).val(storyId)
 
 
   let $status;
   if (title.completed === true) {
-    $status = $(`<div>${'Complete!'}</div>`);
+    $status = $(`<div class="completion-status">${'Complete!'}</div>`);
   } else {
-    $status = $(`<div>${'In Progress'}</div>`);
+    $status = $(`<div class="completion-status">${'In Progress'}</div>`);
   }
 
 
