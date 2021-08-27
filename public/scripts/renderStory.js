@@ -48,11 +48,9 @@ const renderStory = function(storyInformation) {
 
         <form class="create-contribution" value="story_id=${storyId}" id="submit-content-${storyId}">
             <textarea id="contribution-text" value="story_id=${storyId}" placeholder = "You can contribute too!"></textarea>
-
             <div>
               <button type="submit" class="form-button">Submit
             </div>
-
           </form>
         `)
         $activeStory.append($contributionForm);

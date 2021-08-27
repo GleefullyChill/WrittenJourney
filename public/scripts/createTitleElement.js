@@ -15,9 +15,9 @@ const createTitleElement = function(title) {
 
   let $status;
   if (title.completed === true) {
-    $status = $(`<div>${'Complete!'}</div>`);
+    $status = $(`<div class="completion-status">${'Complete!'}</div>`);
   } else {
-    $status = $(`<div>${'In Progress'}</div>`);
+    $status = $(`<div class="completion-status">${'In Progress'}</div>`);
   }
 
 
