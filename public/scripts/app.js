@@ -62,7 +62,7 @@ const changeComplete = function(urlEncodedData) {
     type: "PATCH",
     url: `complete/${urlEncodedData}`,
     data: urlEncodedData
-  })
+  }).then(() => loadTitles());
 }
 
 

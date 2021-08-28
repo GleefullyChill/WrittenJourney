@@ -12,7 +12,7 @@ const markCompleteButton = function(storyId) {
       const storyId = $(this).attr("value");
       const urlEncodedData = `story_id=${storyId}`;
       //app.js ajax call
-      changeComplete(urlEncodedData).then(loadTitles);
+      changeComplete(urlEncodedData);
     })
   })
 }
