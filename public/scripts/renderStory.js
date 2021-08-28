@@ -11,7 +11,7 @@ const renderStory = function(storyInformation) {
     const $activeStory = $(`.active-story`);
     $activeStory.empty();
 
-    console.log(story)
+
     //if nothing is here, that means database failed to provide a story for the given story_id
     if (story) {
 
@@ -21,14 +21,14 @@ const renderStory = function(storyInformation) {
       //check whether owner of story
       if (userCheck) {
         const $button = $(`<button class="mark-complete" id="mark-complete-${storyId}" value="${storyId}" type="button">Mark This Story Complete!</button>`)
-        $story.append($button);
+        $activeStory.append($button);
 
         markCompleteButton(storyId);
       }
 
       $emptyContribution = $(`.no-contribution-yet`);
       $emptyContribution.removeClass(`.no-contribution-yet`);
-      ("contributions: ", contributions)
+
       $activeStory.append($story)
       // //contributions is an array of objects to be turned into contribution elements
       for (const contribute of contributions) {
